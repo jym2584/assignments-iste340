@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>window play</title>
+	<!--
+	<script src="path/js.js" async/defer/none></script>
+
+	async: the script will be loaded in parallel to parsing the page
+	after loaded, executed right away (while still parsing)
+
+	defer: the script loaded in parallel to parsing the page
+	after loaded, waits until parsing is done to execute
+
+	none: script load is blocking, loads in order of html from top to bottom
+	once loaded, then executed right away
+	-->
+	<script>
+		// browser detection -- what does the browser understand (rather what is it, we don't care what it is)
+		// must do this on first project
+		if ( !document.getElementById ) { 
+			window.location = "legacy.html";
+		}
+		let windows = [];
+		let newWin = undefined;
+		function makeNew() {
+			// open a new window and draw and send something to it
+			newWin = window.open('', '', 'height=300, width=250, top=300, left=300');
+			newWin.document.write("<h1>hi</h1>");
+			newWin.location = "https://google.com/"
+			windows.push(newWin);
+		}
+
+		function closeNew() {
+			if (windows) {
+				let currWindow = windows.pop();
+				currWindow.close();
+			}
+		}
+
+	</script>
+</head>
+<body style="background-color:#999966;">
+<form>
+  <input type="button" value="Create New Window!" onclick="makeNew()"><br/>
+  <input type="button" value="Close the New Window!" onclick="closeNew()"><br/>
+</form>
+</body>
+</html>
+
+
+

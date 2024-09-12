@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Document</title>
+        <script>
+            /// scope stuff ///
+
+            // let vs const vs var
+            console.log("scopes test");
+            let x = 0; // x is within the outer scope only
+            const y = 5;
+            var z = "hello";
+
+            function letTest() {
+                let x = 6; // x is within this scope only
+                console.log("in the function", x);
+                z = 'bye';
+                let y = 6;
+                console.log(y);
+            }
+            console.log("before the function", x);
+            letTest();
+            console.log("scopes test end");
+
+            // var o = new Object();
+            // o['name'] = ['dan', 'scott', 'bogaard'];
+            // o['job'] = ['profess', 'rit'];
+            let o = {
+                name: ['dan', 'scott', 'bogaard'],
+                job: ['profess', 'rit'],
+            }
+            
+            // go through all
+            for (let i in o) {
+                console.log(i);
+                for (let j = 0, len=o[i].length; j < len; j++) {
+                    console.log(o[i][j]);
+                }
+            }
+
+        </script>
+    </head>
+</html>
