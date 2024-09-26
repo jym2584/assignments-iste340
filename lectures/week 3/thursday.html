@@ -2,10 +2,44 @@
 <html lang="en">
     <head>
     </head>
+    <script>
+        function val() {
+            // we were called because the submit button was pressed
+            // do we have values in both inputs?
+            let ret = true;
+            if (document.forms[0].elements[0].value == "") {
+                // turn something red 
+                ret = false;
+            }
+            if (document.forms[0].elements[1].value == "") {
+                // turn something red 
+                ret = false;
+            }
+
+            return ret;
+        }
+    </script>
     <body>
-        <form action="page.php", method="get">
-            first:name <input type="text" placeholder="enter name" /><br/>
-            <button id="submit">click me</button>
+        <form action="page.php", method="get" onsubmit="return val()">
+            First name: <input type="text" name='fn' placeholder="enter name" /><br/>
+            Last name: <input type="text" name='ln' placeholder="enter name" /><br/>
+
+            <input type="submit" value="click me"/><br/>
+            <!--
+            All data is sent to page.php
+            Names are needed in forms, also important in radio buttons
+
+            In myphp -- I would access this
+            $_GET['fn'] // if a get
+            $_POST['fn'] // if sent as a POST 
+            -->
         </form>
+
+        <input type="radio" name="test" id="labelTest" value="first"/>
+        <label for="labelTest">Hello there label</label><br/>
+
+        <input type="radio" name="test" id="labelTest2" value="second"/>
+        <label for="labelTest2">Hello there another label</label><br/>
     </body>
 </html>
+

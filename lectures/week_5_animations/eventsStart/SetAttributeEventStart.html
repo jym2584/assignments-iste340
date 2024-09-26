@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<script>
+			function init() {
+				// build a button and give event
+				let bEle = document.createElement('button');
+				bEle.appendChild(document.createTextNode('Press me'));
+				bEle.setAttribute('onclick', 'myFunct()'); // ref to the window object if assigned with setattribute
+				bEle.onmouseenter = myFunct; // ref to the button object if assigned with onmouseenter
+				bElee.onmouseleave = function(){otherFunct("some args")};
+				//document.body[0].appendChild(bEle);
+				
+				document.getElementsByTagName('body')[0].appendChild(bEle);
+			
+			}
+
+			function myFunct() {
+				console.log("From a simple no arg function", this);
+			}
+
+			function someArgs(x) {
+				console.log(x);
+			}
+		</script>
+	</head>
+	<body onload="init();">
+	</body>
+</html>

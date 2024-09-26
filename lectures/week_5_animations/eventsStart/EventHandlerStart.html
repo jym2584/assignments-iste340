@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>Events</title>
+	<script type="text/javascript">
+	//For Image 1 --------------------------------------------------------------------
+	//All as HTML attributes
+	// -since the call to 'this' is within the attribute, it refers to the element.
+	function noArgs() {
+		console.log('this function has no args', this);
+	}
+
+	function args(x) {
+		console.log(x, this);
+	}
+	
+	//For Image 2 --------------------------------------------------------------------
+	//assign an event to Image 2
+	function init() {
+		document.getElementsByTagName('img')[1].onclick = noArgs;
+		document.getElementsByTagName('img')[1].onmouseleave = () => {
+			args("from a js property event");
+		}
+	}
+	  
+	  
+    //For Image 3 --------------------------------------------------------------------
+	//attach an event to Image 3
+	function init2() {
+		// add an event listener to the third image
+		document.images[2].addEventListener('click', noArgs, true);
+		document.images[2].addEventListener('click', () => {
+			args('fromaddEventListener');
+		})
+		
+		
+		
+	}
+
+
+	</script>
+</head>
+<body onload="init();init2();">
+
+  <h1>Image 1 (html attribute):</h1><img src="pic.jpg" 
+  onclick="noArgs();args('from html attr event')"/>
+  
+  <h1>Image 2 (JavaScript property):</h1><img src="pic.jpg"/>
+  
+  <h1>Image 3 (JavaScript listener):</h1><img src="pic.jpg"/>
+
+</body>
+</html>

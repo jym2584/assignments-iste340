@@ -1,0 +1,109 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>DHTMLAni</title>
+	<style>
+		div{
+			color:green;
+			cursor:pointer;	
+		}
+	</style>
+  	<script type="text/javascript">
+		/**
+		 * DTML implementation notes
+		 * 1) document.getElementById().style = color="red" // overrides existing styles
+		 * document.getElementById().style.color="red" // adds onto existing style
+		 * 		Want to have javascript control animations vs CSS
+		 * 	
+		 * 		Reason to learn javascript animations
+		 *
+		 * 2) For rules, if '-', drop and cap Next
+		 * 		font-family in CSS becomes fontFamily
+		 * 		margin-bottom becomes marginBottom
+		 * 
+		 * 		Javascript ways to get them are the same as CSS
+		 * 
+		 * 3) Everything we ever get is a string
+		 * 						set
+		 * 						get
+		 * 
+		 * 		If you want to change a font, it needs to be a string
+		 * 
+		 * 4) Everything loves units
+		 * 		colors: #FF0000 (hex color)
+		 * 				RGBA
+		 * 		size: px
+		**/
+
+		function changeAll(toWhat, whatRule) {
+			document.getElementById('coolBeans').style[whatRule] = toWhat.value;
+		}
+  	</script>
+</head>
+<body>
+	<h2>DHTML review plus...</h2>
+	<!-- Cascading like this.style.color='' means that it'll try to find the default-->
+	<div onmouseleave="this.style.color=''" onmouseover="this.style.color='red'" style="border:2px solid grey;width:10em;margin-bottom:30px;">
+		mouseover test
+	</div>
+	<form action="" method="">
+ 		Put in a color name (or hex):<input type="text" onchange="changeAll(this, 'color')"/><br/>
+ 		Put in a font size (like 12pt):<input type="text" onchange="changeAll(this, 'fontSize')"/><br/>
+ 		Put in a font family:<input type="text" onchange="changeAll(this, 'fontFamily')"/><br/>
+ 		Put in a new left (like 100px):<input type="text" onchange="(this, 'left')"/><br/>
+ 		Put in a new top (like 200px):<input type="text" onchange="(this, 'top')"/><br/>
+ 		Put in a background color:<input type="text" onchange="(this, 'backgroundColor')"/><br/>
+		Put it in a padding:<input type="text" onchange="(this, 'padding')"/><br/>
+	</form> 
+	<section id="coolBeans" style="border:2px solid red;width:10em;position:relative;">Some text to control</section>
+
+
+	<hr style="margin-top:2em;"/>
+	<h2>requestAnimationFrame()</h2>
+	<div onclick="requestAnimationFrame(moveOne)" id="move1" style="border:2px solid green;width:10em;position:relative;left:0px" onclick="">
+		First Slide Test
+	</div>
+	<script>
+		function moveOne() {
+			let dom = document.getElementById('move1');
+			let pos = parseInt(dom.style.left);
+
+			if (pos < 700) {
+				dom.style.left = pos + 5 + 'px';
+				requestAnimationFrame(moveOne);
+			}
+		}
+	</script>
+	
+	<div onclick="requestAnimationFrame(  // Anonymous wrapper function
+		function() {  // This function gets executed
+			moveAll('move2', 900, 7) 
+			});" id="move2" style="border:2px solid aqua;width:10em;position:relative;left:0px" onclick="">
+		More Control Slide Test
+	</div>
+	<script>
+		function moveAll(targetId, end, delta) {
+			let dom = document.getElementById(targetId);
+			let pos = parseInt(dom.style.left);
+			if (pos < end) {
+				dom.style.left = pos + delta + "px";
+				requestAnimationFrame(
+					function() {
+						moveAll(targetId, end, delta)
+					}
+				);
+			}
+		}
+	</script>
+	
+</body>
+</html>
+
+
+
+
+
+
+
+

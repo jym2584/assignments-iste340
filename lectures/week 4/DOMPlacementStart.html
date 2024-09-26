@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<title>DOM Placement</title>
+	<script>
+		function changeMe(){
+      let rEle = document.createElement('input');
+      
+      // input type == range
+      rEle.type = "range";
+
+      // // append child
+      // // parentToStickItInAtTheEnd.appendChild(ele);
+      // document.getElementsByTagName('body')[0].appendChild(rEle);
+      
+      // // Add it at the end of "text"
+      // document.getElementById('text').appendChild(rEle);
+      
+      // // insertBefore
+      // // parentToStickInsideOf.insertBefore(ele, 
+      // //                            childOfParentToGoInFrontOf)
+      // document.getElementsByTagName('body')[0].insertBefore(rEle,
+      //     document.getElementsByTagName('body')[0].firstChild
+      // )
+
+      // $$('body', 0).insertBefore(rEle,
+      //     $('everything')
+      // )
+
+      // remove child 
+      // parentOfThingToKill.removeChild(childOfParentToKill)
+
+      $('everything').removeChild($('moreText'))
+
+      function $(id) {
+        return document.getElementById(id);
+      }
+
+      function $$(ele, index) {
+        return document.getElementsByTagName(ele)[index];
+      }
+
+      // replace child
+      // parentOfThingToReplace.replaceChild(ele, whichChildToReplace)
+      // $('moreText').replaceChild(rEle, $('moreText').firstChild)
+
+      // cloneNode(t/f)
+      // nodeToClone.cloneNode(t/f)
+
+      //let x = $('everything').cloneNode(true)
+      //$$('body',0).appendChild(x);
+      
+      //
+      // No innerHTML
+      // You cannot use innerHTML or innerText on the project
+      //
+      // $('moreText').innerHTML += "<h1>Fred</h1>"
+		}
+	
+	</script>
+</head>
+<body>
+  <div id="everything">
+    <div id="buttons" style="position:absolute; top:8px; left:200px">
+      <button onclick="changeMe();">Do It!</button>
+    </div>
+
+    <div id="text" style="border:2px solid red;width:10em;">
+      Text
+    </div>
+    
+    <div id="moreText" style="border:2px solid orange;width:10em;">
+      More text
+    </div>
+   
+    <hr/>
+  </div>
+</body>
+</html>
