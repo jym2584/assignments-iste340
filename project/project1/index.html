@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dynamic Game Selector</title>
+    <script>
+        if (!document.getElementById) { 
+            window.location = "legacy.html";
+        }
+    </script>
+    <link rel="stylesheet" href="app.css">
+    <script src="scripts/data_setup.js"></script>
+    <script src="scripts/script.js"></script>
+    <script>
+        console.log("Hello!");
+        
+        const treeLayerMessages = layerMessages;
+        const listOfGames = games;
+        const selectedGameId = null;
+
+        let selectLayer = 0;
+
+        function generateSelectFromCurrentTree(tree) {
+            if (!tree) {
+                return;
+            }
+            let mainDiv = document.createElement('div');
+            let currentSelectStatement = document.createElement('h3');
+            currentSelectStatement.textContent = treeLayerMessages[selectLayer];
+            mainDiv.appendChild(currentSelectStatement);
+
+            let selectOptions = document.createElement('select');
+            mainDiv.id = `dynamic-select-${selectLayer}`;
+            selectOptions.id = `dynamic-select-${selectLayer}`;
+            selectLayer += 1;
+
+            // create default option
+            let defaultOption = document.createElement('option');
+            defaultOption.value = "";
+            defaultOption.disabled = true;
+            defaultOption.selected = true;
+            selectOptions.appendChild(defaultOption);
+
+
+            selectOptions.addEventListener('change', (e) => {
+                // Handle last value
+                const selectedOption = e.target.options[e.target.selectedIndex];
+                if (selectedOption.id === "lastSelect") {
+                    selectedGameId = selectedOption.id;
+                    console.log(selectedGameId);
+                }
+
+
+
+                // Handle select generation
+                let gameSelectionsDiv = document.getElementById('game_selections');
+                // Update selection tree if applicable
+                console.log(e.target.id);
+                while (gameSelectionsDiv.lastChild && gameSelectionsDiv.lastChild.id !== e.target.id) {
+                    gameSelectionsDiv.removeChild(gameSelectionsDiv.lastChild);
+                    selectLayer -= 1; // Decrement the selectLayer appropriately
+                }
+                
+                // Create and append the next select based on the selection
+                const selectedValue = e.target.value;
+                const nextTree = tree[selectedValue];
+
+                gameSelectionsDiv.appendChild(generateSelectFromCurrentTree(nextTree));
+
+            });
+
+            // Populate select options based on the current tree
+            if (!Array.isArray(tree)) {
+                for (let selection in tree) {
+                    let option = document.createElement('option');
+                    option.value = selection;
+                    option.textContent = selection;
+                    selectOptions.appendChild(option);
+                }
+            } else {
+                tree.forEach(selection => {
+                    let option = document.createElement('option');
+                    option.value = selection.value;
+                    option.textContent = selection.text;
+                    option.id = "lastSelect"
+                    selectOptions.appendChild(option);
+                })
+            }
+
+            mainDiv.appendChild(selectOptions);
+            return mainDiv;
+        }
+
+        function init() {
+            let gameSelectionsDiv = document.getElementById('game_selections');
+            gameSelectionsDiv.appendChild(generateSelectFromCurrentTree(listOfGames));
+        }
+    </script>
+</head>
+<body onload="init();">
+    <h1>Select Your Game</h1>
+    <div id="game_selections"></div>
+</body>
+</html>
