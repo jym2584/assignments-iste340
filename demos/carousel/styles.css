@@ -1,0 +1,41 @@
+/* styles.css */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.carousel-container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.carousel-controls {
+    margin-bottom: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.carousel-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.screenshot, .video {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.preview-container {
+    margin-top: 20px;
+}
+
+.preview {
+    width: 100%;
+    max-width: 300px;
+}

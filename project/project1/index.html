@@ -13,11 +13,190 @@
     <script>
         console.log("Hello!");
         
-        const treeLayerMessages = layerMessages;
         const listOfGames = games;
-        const selectedGameId = null;
 
+        let selectedGameId = null;
         let selectLayer = 0;
+        let selectLayerCurrMessage = "Select a Genre";
+
+        /**
+        * Populates the carousel media by type and data
+        * @params currentPreview    main media panel to change the state of the media being shown
+        * @params type              video or screenshot
+        * @param gameInfo           data associated with the type (must fit the steam api)
+        */
+        function populateCarouselMedia(currentPreview, thumbnailPreviews, type, gameInfo) {
+            let carouselPreviews = document.createElement('div');
+            carouselPreviews.id = 'carousel-preview';
+
+            if (type === "screenshots") {
+                gameInfo.media.screenshots.forEach( (media) => {
+                    let preview = document.createElement('img');
+                    preview.src = media.path_thumbnail;
+                    preview.width = '116';
+                    preview.height = '65';
+
+                    // Event handler to showcase the current image that is clicked
+                    preview.addEventListener('click', (e) => {
+                        // Remove any current layers being shown
+                        currentPreview.childNodes.forEach(e => { 
+                            currentPreview.removeChild(e);
+                        })
+
+                        // Create new image div inside of currentPreview and show it
+                        let imageView = document.createElement('img');
+                        imageView.src = media.path_full;
+                        imageView.width = '569';
+                        imageView.height = '320';
+                        
+                        
+                        currentPreview.appendChild(imageView);
+
+                    });
+                    carouselPreviews.appendChild(preview);
+                });
+            }
+
+            if (type === "video") {
+                gameInfo.media.movies.forEach( (media) => {
+                    let preview = document.createElement('img');
+                    preview.src = media.thumbnail;
+                    preview.width = '116';
+                    preview.height = '65';
+
+                    // Event handler to showcase the current image that is clicked
+                    preview.addEventListener('click', (e) => {
+                        // Remove any current layers being shown
+                        currentPreview.childNodes.forEach(e => { 
+                            currentPreview.removeChild(e);
+                        })
+
+                        // Create new image div inside of currentPreview and show it
+                        let videoView = document.createElement('video');
+                        videoView.src = media['webm']['480'];
+                        videoView.width = '569';
+                        videoView.height = '320';
+                        videoView.controls = true;
+                        videoView.muted = true;
+                        videoView.volume = 0.25;
+                        
+                        
+                        currentPreview.appendChild(videoView);
+
+                    });
+                    carouselPreviews.appendChild(preview);
+                });
+            }
+
+            thumbnailPreviews.appendChild(carouselPreviews);
+
+        }
+
+        async function showGameInfo() {
+            let gameInfoDiv = document.getElementById('game_info');
+            
+            gameInfoDiv.childNodes.forEach(e => {  // Clear previous game info before appending new one
+                gameInfoDiv.removeChild(e);
+            })
+
+
+        
+            let gameInfo = await fetchGameInfoFromStore(selectedGameId);
+            console.log(gameInfo);
+            
+            if (!gameInfo) {
+                let errorMessage = document.createElement('p');
+                errorMessage.textContent = 'Game information could not be retrieved.';
+                gameInfoDiv.appendChild(errorMessage);
+                return;
+            }
+
+            let mainDiv = document.createElement('div');
+            // ***********************
+            // Carousel
+            // ***********************
+            let left = document.createElement('div');
+            
+            // Current media being shown
+            let currentPreview = document.createElement('div'); // main preview of whats going to be embedded
+
+
+            // Slideshows
+            let thumbnailPreviews = document.createElement('div'); // list of thumbnails
+
+            // Buttons
+            let buttonsControls = document.createElement('div');
+            
+            let videosButton = document.createElement('button');
+            videosButton.textContent = "Videos";
+            videosButton.addEventListener('click', (e) => {
+                thumbnailPreviews.childNodes.forEach( (child) => {
+                    thumbnailPreviews.removeChild(child);
+                })
+                populateCarouselMedia(currentPreview, thumbnailPreviews, "video", gameInfo);
+            })
+            
+            let screenshotsButton = document.createElement('button');
+            screenshotsButton.textContent = "Screenshots"
+            screenshotsButton.addEventListener('click', (e) => {
+                thumbnailPreviews.childNodes.forEach( (child) => {
+                    thumbnailPreviews.removeChild(child);
+                })
+                populateCarouselMedia(currentPreview, thumbnailPreviews, "screenshots", gameInfo);
+            });
+            
+            // Add button controls
+            buttonsControls.appendChild(videosButton);
+            buttonsControls.appendChild(screenshotsButton);
+            
+            // ************************
+            // Add to the left panel
+            // ************************
+            left.appendChild(currentPreview);
+            left.appendChild(thumbnailPreviews);
+            left.appendChild(buttonsControls)
+
+
+            // ***********************
+            // Game Info
+            // ***********************
+            let right = document.createElement('div');
+
+            // Banner
+            if (gameInfo.media && gameInfo.media.banner) {
+                let gameBanner = document.createElement('img');
+                gameBanner.src = gameInfo.media.banner;
+                gameBanner.alt = `${gameInfo.name} banner`;
+                right.appendChild(gameBanner);
+            }
+
+            // Name
+            let gameName = document.createElement('h2');
+            gameName.textContent = gameInfo.name;
+            right.appendChild(gameName);
+
+            // Description
+            let gameDescription = document.createElement('p');
+            gameDescription.textContent = gameInfo.description;
+            right.appendChild(gameDescription);
+    
+            // Website
+            if (gameInfo.website) {
+                let gameWebsite = document.createElement('a');
+                gameWebsite.href = gameInfo.website;
+                gameWebsite.textContent = "Official Website";
+                gameWebsite.target = "_blank"; // Opens the link in a new tab
+                right.appendChild(gameWebsite);
+            }
+    
+
+            // ***********************
+            // Attach everything together
+            // ***********************
+            mainDiv.append(left);
+            mainDiv.append(right);
+            gameInfoDiv.appendChild(mainDiv);
+        }
 
         function generateSelectFromCurrentTree(tree) {
             if (!tree) {
@@ -25,8 +204,6 @@
             }
             let mainDiv = document.createElement('div');
             let currentSelectStatement = document.createElement('h3');
-            currentSelectStatement.textContent = treeLayerMessages[selectLayer];
-            mainDiv.appendChild(currentSelectStatement);
 
             let selectOptions = document.createElement('select');
             mainDiv.id = `dynamic-select-${selectLayer}`;
@@ -41,34 +218,7 @@
             selectOptions.appendChild(defaultOption);
 
 
-            selectOptions.addEventListener('change', (e) => {
-                // Handle last value
-                const selectedOption = e.target.options[e.target.selectedIndex];
-                if (selectedOption.id === "lastSelect") {
-                    selectedGameId = selectedOption.id;
-                    console.log(selectedGameId);
-                }
-
-
-
-                // Handle select generation
-                let gameSelectionsDiv = document.getElementById('game_selections');
-                // Update selection tree if applicable
-                console.log(e.target.id);
-                while (gameSelectionsDiv.lastChild && gameSelectionsDiv.lastChild.id !== e.target.id) {
-                    gameSelectionsDiv.removeChild(gameSelectionsDiv.lastChild);
-                    selectLayer -= 1; // Decrement the selectLayer appropriately
-                }
-                
-                // Create and append the next select based on the selection
-                const selectedValue = e.target.value;
-                const nextTree = tree[selectedValue];
-
-                gameSelectionsDiv.appendChild(generateSelectFromCurrentTree(nextTree));
-
-            });
-
-            // Populate select options based on the current tree
+            // Populate selects if the current tree is still a map
             if (!Array.isArray(tree)) {
                 for (let selection in tree) {
                     let option = document.createElement('option');
@@ -76,7 +226,32 @@
                     option.textContent = selection;
                     selectOptions.appendChild(option);
                 }
+
+                selectOptions.addEventListener('change', (e) => {    
+                    // Handle select generation
+                    let gameSelectionsDiv = document.getElementById('game_selections');
+                    // Update selection tree if applicable
+                    while (gameSelectionsDiv.lastChild && gameSelectionsDiv.lastChild.id !== e.target.id) {
+                        gameSelectionsDiv.removeChild(gameSelectionsDiv.lastChild);
+                        selectLayer -= 1; 
+                    }
+                    
+                    // Create and append the next select based on the selection
+                    const selectedValue = e.target.value;
+                    const nextTree = tree[selectedValue];
+                    if (!Array.isArray(nextTree)) {
+                        selectLayerCurrMessage = `What kind of ${selectedValue}`
+                    } else {
+                        selectLayerCurrMessage = `You might like these games!`
+                    }
+                    gameSelectionsDiv.appendChild(generateSelectFromCurrentTree(nextTree));
+    
+                });
+                
+            // Array based selections
+            // LAST SELECTION
             } else {
+                // populate select array
                 tree.forEach(selection => {
                     let option = document.createElement('option');
                     option.value = selection.value;
@@ -84,8 +259,18 @@
                     option.id = "lastSelect"
                     selectOptions.appendChild(option);
                 })
+                
+                // event handling for choosing last selection
+                selectOptions.addEventListener('change', (e) => {
+                    const selectedOption = e.target.options[e.target.selectedIndex];
+                    if (selectedOption.id === "lastSelect") {
+                        selectedGameId =  String(selectedOption.value);
+                        showGameInfo(selectedGameId);
+                    }
+                });
             }
-
+            currentSelectStatement.textContent = selectLayerCurrMessage; 
+            mainDiv.appendChild(currentSelectStatement);
             mainDiv.appendChild(selectOptions);
             return mainDiv;
         }
@@ -97,7 +282,20 @@
     </script>
 </head>
 <body onload="init();">
-    <h1>Select Your Game</h1>
-    <div id="game_selections"></div>
+    <div id="app_grid">
+        
+        <div id="left">
+            <h1>Select Your Game</h1>
+            <div id="game_selections">
+
+            </div>
+        </div>
+
+        <div id="right">
+            <div id="game_info">
+
+            </div>
+        </div>
+    </div>
 </body>
 </html>

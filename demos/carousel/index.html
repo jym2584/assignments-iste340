@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Carousel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        .carousel {
+            width: 80%;
+            margin: 20px auto;
+            position: relative;
+        }
+        .carousel-content {
+            display: none; /* Hide all content initially */
+            justify-content: center;
+            align-items: center;
+        }
+        .active {
+            display: flex; /* Show only the active content */
+        }
+        .thumbnails {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .thumbnail {
+            cursor: pointer;
+            margin: 0 5px;
+            border: 2px solid transparent;
+            transition: border-color 0.3s;
+        }
+        .thumbnail:hover {
+            border-color: #007bff;
+        }
+        .active-thumbnail {
+            border-color: #007bff;
+        }
+        img {
+            max-width: 640px; /* Set max width for images */
+            height: auto;
+        }
+        video {
+            max-width: 640px; /* Set max width for videos */
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Media Carousel</h1>
+    <button id="video-btn">Videos</button>
+    <button id="screenshot-btn">Screenshots</button>
+
+    <div class="carousel">
+        <div id="video-carousel" class="carousel-content active"></div>
+        <div id="screenshot-carousel" class="carousel-content"></div>
+    </div>
+
+    <div class="thumbnails" id="thumbnails"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

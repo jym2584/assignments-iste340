@@ -1,15 +1,14 @@
-const corsProxyURL = "https://cors-anywhere.herokuapp.com/";
+// AWS proxy setup
+const corsProxyURL = "https://apcekwbz63.execute-api.us-east-2.amazonaws.com/iste340/proxy?url=";
+
 const apiURL = "https://store.steampowered.com/api/appdetails";
 
-const layerMessages = [
-    "Select a genre",
-    "Select a game mechanic or focus",
-    "Select a specific aspect of the game",
-    "Select a game to view my recommendations!"
-]
 const games = {
     // Type of Game (Genre)
     'Action': {
+        "Just give me anything": [
+            { text: 'Apex Legends', value: 1172470 },
+        ],
         // Game Mechanics or Focus
         'First-Person Shooter (FPS)': {
             // Specific aspect of the game
@@ -19,12 +18,20 @@ const games = {
                 { text: 'Overwatch', value: 311310 },
                 { text: 'Counter-Strike: Global Offensive', value: 730 }
             ],
-            'Single-Player Campaign': [
-                { text: 'DOOM Eternal', value: 782330 },
-                { text: 'Wolfenstein II: The New Colossus', value: 384650 },
-                { text: 'Halo Infinite', value: 1240400 },
-                { text: 'Far Cry 6', value: 1348550 }
-            ]
+            'Single-Player Campaign': {
+                "Linear": [
+                    { text: 'DOOM Eternal', value: 782330 },
+                    { text: 'Wolfenstein II: The New Colossus', value: 384650 },
+                    { text: 'Halo Infinite', value: 1240400 },
+                    { text: 'Far Cry 6', value: 1348550 }
+                ],
+                "Story driven choices": [
+                    { text: 'DOOM Eternal', value: 782330 },
+                    { text: 'Wolfenstein II: The New Colossus', value: 384650 },
+                    { text: 'Halo Infinite', value: 1240400 },
+                    { text: 'Far Cry 6', value: 1348550 }
+                ]
+            }
         },
         'Platformer': {
             '2D': [
@@ -112,9 +119,10 @@ async function fetchGameInfoFromStore(appId) {
             name: gameInfo.name,
             description: gameInfo.short_description,
             website: gameInfo.website,
-            price: gameInfo.price_overview.final_formatted,
             media: {
                 banner: gameInfo.capsule_image,
+                screenshots: gameInfo.screenshots,
+                movies: gameInfo.movies
             }
 
         }

@@ -1,47 +1,13 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+#app_grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Left column 1 part, right column 2 parts */
+    gap: 20px; /* Adds spacing between the columns */
 }
 
-body {
-    font-family: Arial, sans-serif;
+#left {
+    /* This will be automatically placed in the first column */
 }
 
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: #333;
-    color: white;
-    padding: 10px 0;
-}
-
-.nav-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 0 20px;
-}
-
-.nav-left a, .nav-right a {
-    color: white;
-    text-decoration: none;
-    padding: 10px 15px;
-    font-size: 16px;
-    transition: background 0.3s;
-}
-
-.nav-left a:hover, .nav-right a:hover {
-    background-color: #555;
-}
-
-.nav-left {
-    display: flex;
-}
-
-.nav-right {
-    display: flex;
+#right {
+    /* This will be automatically placed in the second column */
 }
