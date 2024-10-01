@@ -3,65 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Media Carousel</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f4f4f4;
-        }
-        .carousel {
-            width: 80%;
-            margin: 20px auto;
-            position: relative;
-        }
-        .carousel-content {
-            display: none; /* Hide all content initially */
-            justify-content: center;
-            align-items: center;
-        }
-        .active {
-            display: flex; /* Show only the active content */
-        }
-        .thumbnails {
-            display: flex;
-            justify-content: center;
-            margin-top: 10px;
-        }
-        .thumbnail {
-            cursor: pointer;
-            margin: 0 5px;
-            border: 2px solid transparent;
-            transition: border-color 0.3s;
-        }
-        .thumbnail:hover {
-            border-color: #007bff;
-        }
-        .active-thumbnail {
-            border-color: #007bff;
-        }
-        img {
-            max-width: 640px; /* Set max width for images */
-            height: auto;
-        }
-        video {
-            max-width: 640px; /* Set max width for videos */
-            height: auto;
-        }
-    </style>
+    <title>Carousel Example</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <h1>Media Carousel</h1>
-    <button id="video-btn">Videos</button>
-    <button id="screenshot-btn">Screenshots</button>
-
-    <div class="carousel">
-        <div id="video-carousel" class="carousel-content active"></div>
-        <div id="screenshot-carousel" class="carousel-content"></div>
+    <div class="carousel-container">
+        <div class="carousel-controls">
+            <button id="btn-screenshots">Screenshots</button>
+            <button id="btn-videos">Videos</button>
+        </div>
+        <div class="carousel-content">
+            <div class="screenshots" id="screenshots">
+                <div class="screenshot" id="screenshot-container"></div>
+            </div>
+            <div class="videos" id="videos" style="display: none;">
+                <div class="video" id="video-container"></div>
+            </div>
+        </div>
+        <div class="preview-container">
+            <div id="preview"></div>
+        </div>
     </div>
-
-    <div class="thumbnails" id="thumbnails"></div>
 
     <script src="script.js"></script>
 </body>

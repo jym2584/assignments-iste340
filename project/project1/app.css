@@ -1,13 +1,70 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
 #app_grid {
     display: grid;
-    grid-template-columns: 1fr 2fr; /* Left column 1 part, right column 2 parts */
-    gap: 20px; /* Adds spacing between the columns */
+    grid-template-areas:
+    'header header'
+    'menu main';
+    grid-template-columns: 400px 1fr; /* Fixed width for sidebar and flexible space for main content */
+    gap: 20px;
+}
+
+#header {
+    grid-area: header;
+    width: 100%;
+    font-size: 30px;
+    background-color: #2196f3;
+    padding: 20px;
+    color: white;
 }
 
 #left {
-    /* This will be automatically placed in the first column */
+    grid-area: menu;
+    padding: 10px 40px;
 }
 
 #right {
-    /* This will be automatically placed in the second column */
+    grid-area: main; 
+    display: flex;
+}
+
+button {
+    color: #007bff; 
+    text-decoration: none; 
+    font-weight: bold;
+    padding: 20px;
+    color: white;
+    background-color: #2196f3;
+    padding: 10px 10px;
+    border-radius: 5px; 
+    cursor: pointer;
+
+}
+
+a {
+    color: #007bff; 
+    text-decoration: none; 
+    font-weight: bold;
+    color: white;
+    background-color: #2196f3;
+    padding: 10px 10px;
+    margin: 5px;
+    border-radius: 5px; 
+    cursor: pointer;
+
+}
+
+select {
+    background-color: #ffffff;
+    width: 250px;
+    padding: 10px 10px;
+    border-radius: 5px; 
+}
+
+select :disabled {
+    display: none;
 }

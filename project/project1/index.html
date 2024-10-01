@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <title>Dynamic Game Selector</title>
     <script>
-        if (!document.getElementById) { 
+        if (!document.getElementById) {
             window.location = "legacy.html";
         }
     </script>
@@ -12,7 +14,7 @@
     <script src="scripts/script.js"></script>
     <script>
         console.log("Hello!");
-        
+
         const listOfGames = games;
 
         let selectedGameId = null;
@@ -20,56 +22,57 @@
         let selectLayerCurrMessage = "Select a Genre";
 
         /**
-        * Populates the carousel media by type and data
-        * @params currentPreview    main media panel to change the state of the media being shown
-        * @params type              video or screenshot
-        * @param gameInfo           data associated with the type (must fit the steam api)
-        */
+         * Populates the carousel media by type and data
+         * @params currentPreview    main media panel to change the state of the media being shown
+         * @params type              video or screenshot
+         * @param gameInfo           data associated with the type (must fit the steam api)
+         */
         function populateCarouselMedia(currentPreview, thumbnailPreviews, type, gameInfo) {
             let carouselPreviews = document.createElement('div');
             carouselPreviews.id = 'carousel-preview';
+            carouselPreviews.style = "display: flex; overflow-x: auto; padding: 10px; border: 1px solid #ccc; border-radius: 5px; width: 100%;";
 
             if (type === "screenshots") {
-                gameInfo.media.screenshots.forEach( (media) => {
+                gameInfo.media.screenshots.forEach((media) => {
                     let preview = document.createElement('img');
                     preview.src = media.path_thumbnail;
                     preview.width = '116';
                     preview.height = '65';
+                    preview.style = "margin-right: 5px; cursor: pointer;  width: 116px; height: 65px;";
 
                     // Event handler to showcase the current image that is clicked
                     preview.addEventListener('click', (e) => {
                         // Remove any current layers being shown
-                        currentPreview.childNodes.forEach(e => { 
+                        currentPreview.childNodes.forEach(e => {
                             currentPreview.removeChild(e);
-                        })
+                        });
 
                         // Create new image div inside of currentPreview and show it
                         let imageView = document.createElement('img');
                         imageView.src = media.path_full;
                         imageView.width = '569';
                         imageView.height = '320';
-                        
-                        
-                        currentPreview.appendChild(imageView);
 
+                        currentPreview.appendChild(imageView);
                     });
                     carouselPreviews.appendChild(preview);
                 });
             }
 
             if (type === "video") {
-                gameInfo.media.movies.forEach( (media) => {
+                gameInfo.media.movies.forEach((media) => {
                     let preview = document.createElement('img');
                     preview.src = media.thumbnail;
                     preview.width = '116';
                     preview.height = '65';
+                    preview.style = "margin-right: 5px; cursor: pointer; transition: transform 0.3s; width: 116px; height: 65px;";
 
                     // Event handler to showcase the current image that is clicked
                     preview.addEventListener('click', (e) => {
                         // Remove any current layers being shown
-                        currentPreview.childNodes.forEach(e => { 
+                        currentPreview.childNodes.forEach(e => {
                             currentPreview.removeChild(e);
-                        })
+                        });
 
                         // Create new image div inside of currentPreview and show it
                         let videoView = document.createElement('video');
@@ -79,31 +82,26 @@
                         videoView.controls = true;
                         videoView.muted = true;
                         videoView.volume = 0.25;
-                        
-                        
-                        currentPreview.appendChild(videoView);
 
+                        currentPreview.appendChild(videoView);
                     });
                     carouselPreviews.appendChild(preview);
                 });
             }
 
             thumbnailPreviews.appendChild(carouselPreviews);
-
         }
 
         async function showGameInfo() {
             let gameInfoDiv = document.getElementById('game_info');
-            
+
             gameInfoDiv.childNodes.forEach(e => {  // Clear previous game info before appending new one
                 gameInfoDiv.removeChild(e);
-            })
+            });
 
-
-        
             let gameInfo = await fetchGameInfoFromStore(selectedGameId);
             console.log(gameInfo);
-            
+
             if (!gameInfo) {
                 let errorMessage = document.createElement('p');
                 errorMessage.textContent = 'Game information could not be retrieved.';
@@ -112,50 +110,68 @@
             }
 
             let mainDiv = document.createElement('div');
+            mainDiv.style = "display: grid; grid-template-columns: 1fr 2fr; gap: 20px; padding: 20px; background-color: #f9f9f9; border-radius: 10px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);";
+
             // ***********************
             // Carousel
             // ***********************
             let left = document.createElement('div');
-            
-            // Current media being shown
-            let currentPreview = document.createElement('div'); // main preview of whats going to be embedded
+            left.style = "display: flex; flex-direction: column;";
 
+            // Current media being shown
+            let currentPreview = document.createElement('div'); // main preview of what's going to be embedded
+            currentPreview.style = "border: 1px solid #ccc; border-radius: 5px; overflow: hidden; width: 569px; height: 320px; margin-bottom: 10px;";
 
             // Slideshows
             let thumbnailPreviews = document.createElement('div'); // list of thumbnails
+            thumbnailPreviews.style = "display: flex; flex-wrap: nowrap; justify-content: start; overflow-x: scroll; width: 569px;";
 
             // Buttons
             let buttonsControls = document.createElement('div');
-            
+            buttonsControls.style = "display: flex; margin-top: 10px;";
+
             let videosButton = document.createElement('button');
             videosButton.textContent = "Videos";
             videosButton.addEventListener('click', (e) => {
-                thumbnailPreviews.childNodes.forEach( (child) => {
+                thumbnailPreviews.childNodes.forEach((child) => {
                     thumbnailPreviews.removeChild(child);
-                })
+                });
                 populateCarouselMedia(currentPreview, thumbnailPreviews, "video", gameInfo);
-            })
-            
+            });
+
             let screenshotsButton = document.createElement('button');
-            screenshotsButton.textContent = "Screenshots"
+            screenshotsButton.textContent = "Screenshots";
+            screenshotsButton.style.backgroundColor = "green"
             screenshotsButton.addEventListener('click', (e) => {
-                thumbnailPreviews.childNodes.forEach( (child) => {
+                thumbnailPreviews.childNodes.forEach((child) => {
                     thumbnailPreviews.removeChild(child);
-                })
+                });
                 populateCarouselMedia(currentPreview, thumbnailPreviews, "screenshots", gameInfo);
             });
             
+
+            // show screenshots by default
+            populateCarouselMedia(currentPreview, thumbnailPreviews, "screenshots", gameInfo);
+            // Create new image div inside of currentPreview and show it
+            let imageView = document.createElement('img');
+            imageView.src = gameInfo.media.screenshots[0].path_thumbnail;
+            imageView.width = '569';
+            imageView.height = '320';
+
+            currentPreview.appendChild(imageView);
             // Add button controls
-            buttonsControls.appendChild(videosButton);
+
             buttonsControls.appendChild(screenshotsButton);
-            
+            if (gameInfo.media.movies) {
+                buttonsControls.appendChild(videosButton);
+            }
+
             // ************************
             // Add to the left panel
             // ************************
             left.appendChild(currentPreview);
             left.appendChild(thumbnailPreviews);
-            left.appendChild(buttonsControls)
-
+            left.appendChild(buttonsControls);
 
             // ***********************
             // Game Info
@@ -167,28 +183,36 @@
                 let gameBanner = document.createElement('img');
                 gameBanner.src = gameInfo.media.banner;
                 gameBanner.alt = `${gameInfo.name} banner`;
+                gameBanner.style = "border-radius: 5px; margin-bottom: 10px; width: 306px; height: 143px; ";
                 right.appendChild(gameBanner);
             }
 
             // Name
             let gameName = document.createElement('h2');
             gameName.textContent = gameInfo.name;
+            gameName.style = "margin-bottom: 10px; color: #333;";
             right.appendChild(gameName);
 
             // Description
             let gameDescription = document.createElement('p');
             gameDescription.textContent = gameInfo.description;
+            gameDescription.style = "color: #666; margin-bottom: 10px;";
             right.appendChild(gameDescription);
-    
+            
+            let steamWebsite = document.createElement('a');
+            steamWebsite.href = `https://store.steampowered.com/app/${selectedGameId}`;
+            steamWebsite.textContent = "Steam Page";
+            steamWebsite.target = "_blank"; 
+            right.appendChild(steamWebsite)
+
             // Website
             if (gameInfo.website) {
                 let gameWebsite = document.createElement('a');
                 gameWebsite.href = gameInfo.website;
                 gameWebsite.textContent = "Official Website";
-                gameWebsite.target = "_blank"; // Opens the link in a new tab
+                gameWebsite.target = "_blank"; 
                 right.appendChild(gameWebsite);
             }
-    
 
             // ***********************
             // Attach everything together
@@ -202,22 +226,26 @@
             if (!tree) {
                 return;
             }
+            
             let mainDiv = document.createElement('div');
             let currentSelectStatement = document.createElement('h3');
-
+        
             let selectOptions = document.createElement('select');
             mainDiv.id = `dynamic-select-${selectLayer}`;
             selectOptions.id = `dynamic-select-${selectLayer}`;
             selectLayer += 1;
-
-            // create default option
+        
+            // Create default option
             let defaultOption = document.createElement('option');
             defaultOption.value = "";
             defaultOption.disabled = true;
             defaultOption.selected = true;
             selectOptions.appendChild(defaultOption);
-
-
+        
+            // Initial height is 0
+            mainDiv.style.height = '0px';
+            mainDiv.style.overflow = 'hidden'; // Prevent overflow during animation
+        
             // Populate selects if the current tree is still a map
             if (!Array.isArray(tree)) {
                 for (let selection in tree) {
@@ -226,54 +254,92 @@
                     option.textContent = selection;
                     selectOptions.appendChild(option);
                 }
-
-                selectOptions.addEventListener('change', (e) => {    
+        
+                selectOptions.addEventListener('change', (e) => {
                     // Handle select generation
                     let gameSelectionsDiv = document.getElementById('game_selections');
                     // Update selection tree if applicable
                     while (gameSelectionsDiv.lastChild && gameSelectionsDiv.lastChild.id !== e.target.id) {
                         gameSelectionsDiv.removeChild(gameSelectionsDiv.lastChild);
-                        selectLayer -= 1; 
+                        selectLayer -= 1;
                     }
-                    
+        
                     // Create and append the next select based on the selection
-                    const selectedValue = e.target.value;
-                    const nextTree = tree[selectedValue];
+                    let selectedValue = e.target.value;
+                    let nextTree = tree[selectedValue];
                     if (!Array.isArray(nextTree)) {
-                        selectLayerCurrMessage = `What kind of ${selectedValue}`
+                        selectLayerCurrMessage = `What kind of ${selectedValue}?`;
                     } else {
-                        selectLayerCurrMessage = `You might like these games!`
+                        selectLayerCurrMessage = `You might like these games!`;
                     }
-                    gameSelectionsDiv.appendChild(generateSelectFromCurrentTree(nextTree));
-    
+        
+                    // Create the new select and append it to the game selections div
+                    let newSelect = generateSelectFromCurrentTree(nextTree);
+                    gameSelectionsDiv.appendChild(newSelect);
+        
+                    // Start the slide down animation
+                    requestAnimationFrame(() => {
+                        slideDown(newSelect);
+                    });
                 });
-                
-            // Array based selections
-            // LAST SELECTION
+        
             } else {
-                // populate select array
+                // Populate select array
                 tree.forEach(selection => {
                     let option = document.createElement('option');
                     option.value = selection.value;
                     option.textContent = selection.text;
-                    option.id = "lastSelect"
+                    option.id = "lastSelect";
                     selectOptions.appendChild(option);
-                })
-                
-                // event handling for choosing last selection
+                });
+        
+                // Event handling for choosing last selection
                 selectOptions.addEventListener('change', (e) => {
                     const selectedOption = e.target.options[e.target.selectedIndex];
                     if (selectedOption.id === "lastSelect") {
-                        selectedGameId =  String(selectedOption.value);
+                        selectedGameId = String(selectedOption.value);
                         showGameInfo(selectedGameId);
                     }
                 });
             }
-            currentSelectStatement.textContent = selectLayerCurrMessage; 
+        
+            currentSelectStatement.textContent = selectLayerCurrMessage;
             mainDiv.appendChild(currentSelectStatement);
             mainDiv.appendChild(selectOptions);
+        
+            // Append to the game selections div
+            let gameSelectionsDiv = document.getElementById('game_selections');
+            gameSelectionsDiv.appendChild(mainDiv);
+        
+            // Start the slide down animation for the current mainDiv
+            requestAnimationFrame(() => {
+                slideDown(mainDiv);
+            });
+        
             return mainDiv;
         }
+        
+        /**
+        * Slide down animation using CSS
+        */
+        function slideDown(element) {
+            element.style.height = 'auto';
+            let height = element.offsetHeight; 
+        
+            element.style.height = '0px'; 
+            requestAnimationFrame(() => {
+                // Use CSS transition
+                element.style.transition = 'height 0.3s ease-out'; 
+                element.style.height = height + 'px'; 
+        
+                // Remove transition
+                setTimeout(() => {
+                    element.style.transition = ''; 
+                    element.style.height = 'auto'; 
+                }, 300); 
+            });
+        }
+        
 
         function init() {
             let gameSelectionsDiv = document.getElementById('game_selections');
@@ -281,9 +347,10 @@
         }
     </script>
 </head>
+
 <body onload="init();">
     <div id="app_grid">
-        
+        <div id="header"><b>Game Recommendations</b></div>
         <div id="left">
             <h1>Select Your Game</h1>
             <div id="game_selections">
@@ -298,4 +365,5 @@
         </div>
     </div>
 </body>
+
 </html>
