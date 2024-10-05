@@ -189,7 +189,7 @@
                     console.log(`savedGames cookies: ${savedGames}`);
                 // otherwise use local storage
                 } else if (window.localStorage) {
-                    savedGames = JSON.parse(savedGamesString);
+                    savedGames = JSON.parse(localStorage.getItem('savedGames'));
                 }
 
                 let gameExists = false;
@@ -507,7 +507,7 @@
             if (useCookies) {
                 button.textContent = "Remove History from Cookies"
                 button.addEventListener('click', (e) => {
-                    DeleteCookie('savedGames');
+                    SetCookie('savedGames', JSON.stringify([]));
 
                     let dropdownButtonDiv = document.getElementById('dropdown_button_div');
                     dropdownButtonDiv.childNodes.forEach( node => {
@@ -521,7 +521,8 @@
                 button.textContent = "Remove History from Local Storage"
 
                 button.addEventListener('click', (e) => {
-                    localStorage.removeItem('savedGames');
+                    localStorage.setItem('savedGames', JSON.stringify([]));
+
                     let dropdownButtonDiv = document.getElementById('dropdown_button_div');
                     dropdownButtonDiv.childNodes.forEach( node => {
                         dropdownButtonDiv.removeChild(node);
@@ -531,6 +532,7 @@
                     dropdownButtonDiv.appendChild(dropdownMenu);
                 })
             }
+
 
 
 
