@@ -12,8 +12,8 @@
     <link rel="stylesheet" href="app.css">
     <script src="scripts/data_setup.js"></script>
     <script src="scripts/script.js"></script>
+    <script src="scripts/cookies.js"></script>
     <script>
-        console.log("Hello!");
 
         const listOfGames = games;
 
@@ -100,7 +100,6 @@
             });
 
             let gameInfo = await fetchGameInfoFromStore(selectedGameId);
-            console.log(gameInfo);
 
             if (!gameInfo) {
                 let errorMessage = document.createElement('p');
@@ -166,6 +165,63 @@
                 buttonsControls.appendChild(videosButton);
             }
 
+            // Save as cookie/local storage button
+            let saveGameButton = document.createElement('button');
+            saveGameButton.textContent = "Save to History";
+
+            saveGameButton.addEventListener('click', (e) => {
+                // Check if cookie is enabled
+            
+                // Use cookie as preferred method
+                console.log("button clicked")
+                let savedGames = [];
+
+                let useCookies = false;
+                SetCookie('test', 1);
+                if (GetCookie('test')) {
+                    useCookies = true;
+                    DeleteCookie('test');
+                }
+    
+                if (useCookies) {
+                    let cookieGames = GetCookie('savedGames');
+                    savedGames = JSON.parse(GetCookie('savedGames'));
+                    console.log(`savedGames cookies: ${savedGames}`);
+                // otherwise use local storage
+                } else if (window.localStorage) {
+                    savedGames = JSON.parse(savedGamesString);
+                }
+
+                let gameExists = false;
+                for (let i = 0; i < savedGames.length; i++) {
+                    if (parseInt(savedGames[i].value) === parseInt(gameInfo.value)) {
+                        gameExists = true;
+                        break; // Exit the loop if a match is found
+                    }
+                }
+                
+                if (!gameExists) {
+                // Push new game info into the array
+                    savedGames.push({
+                        'text': gameInfo.name,
+                        'value': parseInt(gameInfo.value),
+                    });
+                    
+                    if (useCookies) {
+                        SetCookie('savedGames', JSON.stringify(savedGames));
+                    } else if (window.localStorage) {
+                        localStorage.setItem('savedGames', JSON.stringify(savedGames));
+                        console.log(`Updated local storage: ${JSON.stringify(savedGames)}`);
+                    }
+                } else {
+                    console.log("Game already added")
+                }
+
+
+            })
+
+            buttonsControls.appendChild(saveGameButton)
+
             // ************************
             // Add to the left panel
             // ************************
@@ -220,6 +276,7 @@
             mainDiv.append(left);
             mainDiv.append(right);
             gameInfoDiv.appendChild(mainDiv);
+            slideDown(gameInfoDiv);
         }
 
         function generateSelectFromCurrentTree(tree) {
@@ -244,7 +301,7 @@
         
             // Initial height is 0
             mainDiv.style.height = '0px';
-            mainDiv.style.overflow = 'hidden'; // Prevent overflow during animation
+            mainDiv.style.overflow = 'hidden';
         
             // Populate selects if the current tree is still a map
             if (!Array.isArray(tree)) {
@@ -295,7 +352,7 @@
         
                 // Event handling for choosing last selection
                 selectOptions.addEventListener('change', (e) => {
-                    const selectedOption = e.target.options[e.target.selectedIndex];
+                    let selectedOption = e.target.options[e.target.selectedIndex];
                     if (selectedOption.id === "lastSelect") {
                         selectedGameId = String(selectedOption.value);
                         showGameInfo(selectedGameId);
@@ -323,34 +380,127 @@
         * Slide down animation using CSS
         */
         function slideDown(element) {
-            element.style.height = 'auto';
-            let height = element.offsetHeight; 
+            // Get the height of the current div and make it hidden by default
+            let targetHeight = element.scrollHeight; 
+            element.style.height = '0px';
+            element.style.overflow = 'hidden'; 
+            
+
+            // Start slidedown animation
+            let startTime = null;
+            function animate(timestamp) {
+                if (!startTime) {
+                    startTime = timestamp
+                }; 
+                
+                // Calculate how much the div should move
+                let currentHeight = ((timestamp - startTime) / 150) * targetHeight;
+                element.style.height = currentHeight + 'px';
         
-            element.style.height = '0px'; 
-            requestAnimationFrame(() => {
-                // Use CSS transition
-                element.style.transition = 'height 0.3s ease-out'; 
-                element.style.height = height + 'px'; 
+                // Keep animating until currentHeight reaches the target height
+                if (currentHeight < targetHeight) {
+                    requestAnimationFrame(animate);
+                }
+            }
         
-                // Remove transition
-                setTimeout(() => {
-                    element.style.transition = ''; 
-                    element.style.height = 'auto'; 
-                }, 300); 
-            });
+            requestAnimationFrame(animate); 
         }
+
+        function showHistoryDropdownMenu() {
+            
+            let dropdown = document.createElement('div');
+            dropdown.className = "dropdown";
         
+            // Create dropdown button
+            let dropdownButton = document.createElement('button');
+            dropdownButton.className = "dropdown-button";
+            dropdownButton.textContent = "Saved Games"; // Add text to button
+        
+            // Create dropdown content
+            let dropdownContent = document.createElement('div');
+            dropdownContent.className = 'dropdown-content';
+        
+            // Check if cookie is enabled
+        
+            // Use cookie as preferred method
+            let savedGames = [];
+            let useCookies = false;
+            SetCookie('test', 1);
+            if (GetCookie('test')) {
+                useCookies = true;
+                DeleteCookie('test');
+            }
+
+            if (useCookies) {
+                let cookieGames = GetCookie('savedGames');
+                if (!cookieGames) {
+                    console.log("No cookies. Initialized cookies")
+                    SetCookie('savedGames', JSON.stringify([]));
+                }
+
+                savedGames = JSON.parse(GetCookie('savedGames'));
+                console.log(`savedGames cookies: ${savedGames}`);
+            }else if (window.localStorage) {
+                try {
+                    let storageGames = localStorage.getItem('savedGames');
+                    if (!storageGames) {
+                        console.log("Local storage initialize")
+                        localStorage.setItem('savedGames', JSON.stringify([]));
+                    }
+
+                    savedGames = JSON.parse(storageGames);
+                    console.log(`Saved games local storage: ${savedGames}`)
+                } catch {}
+            }
+        
+            // Populate dropdown with saved games
+            if (savedGames.length > 0) {
+                for (let i = 0; i < savedGames.length; i++) {
+                    let dropdownSelect = document.createElement('div');
+                    dropdownSelect.className = 'dropdown-select';
+            
+                    dropdownSelect.textContent = savedGames[i].text;
+                    dropdownSelect.value = savedGames[i].value;
+                    dropdownSelect.addEventListener('click', (e) => {
+                        let selectedOption = String(e.target.value);
+                        selectedGameId = selectedOption;
+
+                        showGameInfo();
+                    });
+            
+                    dropdownContent.appendChild(dropdownSelect);
+                }
+            } else {
+                let dropdownSelect = document.createElement('div');
+                dropdownSelect.className = 'dropdown-select';
+                dropdownSelect.textContent = "Nothing to see here. Go save some games!";        
+                dropdownContent.appendChild(dropdownSelect);
+            }
+        
+            // Append button and content to dropdown
+            dropdown.appendChild(dropdownButton);
+            dropdown.appendChild(dropdownContent);
+        
+            return dropdown;
+        }
 
         function init() {
             let gameSelectionsDiv = document.getElementById('game_selections');
             gameSelectionsDiv.appendChild(generateSelectFromCurrentTree(listOfGames));
+            
+            let dropdownMenu = showHistoryDropdownMenu(); // Renamed to indicate it's a menu
+            let dropdownButtonDiv = document.getElementById('dropdown_button_div');
+            dropdownButtonDiv.appendChild(dropdownMenu);
         }
     </script>
 </head>
 
 <body onload="init();">
     <div id="app_grid">
-        <div id="header"><b>Game Recommendations</b></div>
+        <div id="header">
+            <b>Game Recommendations</b>
+            <div id="dropdown_button_div">History</div>
+        </div>
         <div id="left">
             <h1>Select Your Game</h1>
             <div id="game_selections">

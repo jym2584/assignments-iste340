@@ -117,6 +117,7 @@ async function fetchGameInfoFromStore(appId) {
         
         let returnData = {
             name: gameInfo.name,
+            value: appId,
             description: gameInfo.short_description,
             website: gameInfo.website,
             media: {
