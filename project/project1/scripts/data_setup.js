@@ -6,30 +6,52 @@ const apiURL = "https://store.steampowered.com/api/appdetails";
 const games = {
     // Type of Game (Genre)
     'Action': {
-        "Just give me anything": [
+        "Just give me a recommendation": [
             { text: 'Apex Legends', value: 1172470 },
         ],
         // Game Mechanics or Focus
-        'First-Person Shooter (FPS)': {
+        'Shooters': {
             // Specific aspect of the game
-            'Multiplayer': [
-                { text: 'Call of Duty: Modern Warfare', value: 1302010 },
-                { text: 'Apex Legends', value: 1172470 },
-                { text: 'Overwatch', value: 311310 },
-                { text: 'Counter-Strike: Global Offensive', value: 730 }
-            ],
-            'Single-Player Campaign': {
+            'Multiplayer': {
+                'Paid': {
+                    'Sandbox': [
+                        { text: 'Garry\'s Mod', value: 4000 },
+                    ],
+                    'Shoot-em-up': {
+                        'Competitive': {
+                            'Super competitive': [
+                                { text: 'Elden Ring', value: 1245620 },
+                                { text: 'GTFO', value: 493520 },
+                            ],
+                            'Normal competitive': [
+                                { text: 'Rainbow Six Siege', value: 359550 },
+                            ]
+                        },
+                        'Casual' : [
+                            { text: 'GTA 5', value: 271590 },
+                            { text: 'Payday 3', value: 1272080 },
+                        ]
+                        
+                    },
+                    'Co-op': [
+                        { text: 'Helldivers 2', value: 553850 },
+                        { text: 'Deep Rock Galactic', value: 548430 },
+
+                    ]
+                }, 
+                'Free to Play': [
+                    { text: 'Apex Legends', value: 1172470 },
+                    { text: 'Overwatch', value: 2357570 },
+                    { text: 'Counter-Strike: Global Offensive', value: 730 },
+                    { text: 'Team Fortress 2', value: 440 }
+                ]
+            },
+            'Singleplayer': {
                 "Linear": [
                     { text: 'DOOM Eternal', value: 782330 },
-                    { text: 'Wolfenstein II: The New Colossus', value: 384650 },
-                    { text: 'Halo Infinite', value: 1240400 },
-                    { text: 'Far Cry 6', value: 1348550 }
-                ],
-                "Story driven choices": [
-                    { text: 'DOOM Eternal', value: 782330 },
-                    { text: 'Wolfenstein II: The New Colossus', value: 384650 },
-                    { text: 'Halo Infinite', value: 1240400 },
-                    { text: 'Far Cry 6', value: 1348550 }
+                    { text: 'Wolfenstein II: The New Colossus', value: 612880 },
+                    { text: 'Halo', value: 976730 },
+                    { text: 'Far Cry 6', value: 2369390 }
                 ]
             }
         },
@@ -37,41 +59,13 @@ const games = {
             '2D': [
                 { text: 'Celeste', value: 504230 },
                 { text: 'Hollow Knight', value: 367520 },
-                { text: 'Ori and the Blind Forest', value: 219790 }
+                { text: 'Ori and the Will of the WIsps', value: 1057090 }
             ],
             '3D': [
-                { text: 'Sonic Frontiers', value: 623230 }
+                { text: 'Sonic Frontiers', value: 1237320 }
             ]
         }
     },
-
-    'Role-Playing Game (RPG)': {
-        'Action RPG': {
-            'Open-World': [
-                { text: 'The Witcher 3: Wild Hunt', value: 292030 },
-                { text: 'Elden Ring', value: 1245620 },
-                { text: 'Horizon Zero Dawn', value: 1151640 },
-                { text: 'Cyberpunk 2077', value: 1091500 }
-            ],
-            'Linear': [
-                { text: 'Dark Souls 3', value: 374320 },
-                { text: 'Nioh 2', value: 1512820 },
-                { text: 'Sekiro: Shadows Die Twice', value: 814380 },
-                { text: 'Devil May Cry 5', value: 601150 }
-            ]
-        },
-        'Turn-Based': {
-            'Strategy': [
-                { text: 'XCOM 2', value: 268500 },
-                { text: 'Divinity: Original Sin 2', value: 435150 },
-            ],
-            'Classic JRPG': [
-                { text: 'Dragon Quest XI', value: 806190 },
-                { text: 'Chrono Trigger', value: 613830 }
-            ]
-        }
-    },
-
     'Simulation': {
         'Life Simulation': {
             'Building/Management': [
@@ -81,24 +75,29 @@ const games = {
             ],
             'Farming': [
                 { text: 'Stardew Valley', value: 413150 },
-                { text: 'Harvest Moon: Light of Hope', value: 495320 },
+                { text: 'Harvest Moon: Light of Hope', value: 2140650 },
                 { text: 'My Time at Portia', value: 666140 },
             ]
         },
         'Vehicle Simulation': {
             'Driving': [
                 { text: 'Need for Speed Heat', value: 1222680 },
-                { text: 'Dirt Rally 2.0', value: 690320 }
+                { text: 'Dirt Rally 2.0', value: 690790 }
             ],
             'Flight': [
                 { text: 'Microsoft Flight Simulator', value: 1250410 },
-                { text: 'Ace Combat 7: Skies Unknown', value: 742290 },
-                { text: 'DCS World', value: 220200 }
+                { text: 'Ace Combat 7: Skies Unknown', value: 502500 },
+                { text: 'Kerbal Space Program', value: 220200 }
             ]
         }
     }
 };
 
+/**
+ * AJAX call to fetch game info from appID
+ * @param {String} appId 
+ * @returns 
+ */
 async function fetchGameInfoFromStore(appId) {
     try {
         // fetch courses from tiger center

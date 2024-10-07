@@ -5,10 +5,11 @@ let selectLayer = 0;
 let selectLayerCurrMessage = "Select a Genre";
 
 /**
- * Populates the carousel media by type and data
- * @params currentPreview    main media panel to change the state of the media being shown
- * @params type              video or screenshot
- * @param gameInfo           data associated with the type (must fit the steam api)
+ * 
+ * @param currentPreview  - DOM object of the current media being previewed
+ * @param thumbnailPreviews -  DOPM object of thumbnail previews
+ * @param {String} type - "screenshots" or "video"  
+ * @param {JSON} gameInfo - Current game info 
  */
 function populateCarouselMedia(
   currentPreview,
@@ -83,6 +84,10 @@ function populateCarouselMedia(
   thumbnailPreviews.appendChild(carouselPreviews);
 }
 
+/**
+ * Initializes game info DOM object
+ * @returns  DOM object containing populated game info
+ */
 async function showGameInfo() {
   let gameInfoDiv = document.getElementById("game_info");
 
@@ -291,6 +296,11 @@ async function showGameInfo() {
   slideDown(gameInfoDiv);
 }
 
+/**
+ * Populates dynamic selects
+ * @param {JSON} tree - Current json tree from generated data 
+ * @returns 
+ */
 function generateSelectFromCurrentTree(tree) {
   if (!tree) {
     return;
@@ -304,14 +314,12 @@ function generateSelectFromCurrentTree(tree) {
   selectOptions.id = `dynamic-select-${selectLayer}`;
   selectLayer += 1;
 
-  // Create default option
+  // Default option
   let defaultOption = document.createElement("option");
   defaultOption.value = "";
   defaultOption.disabled = true;
   defaultOption.selected = true;
   selectOptions.appendChild(defaultOption);
-
-  // Initial height is 0
   mainDiv.style.height = "0px";
   mainDiv.style.overflow = "hidden";
 
@@ -391,7 +399,8 @@ function generateSelectFromCurrentTree(tree) {
 }
 
 /**
- * Slide down animation using CSS
+ * Slides down the element
+ * @param {Document} element DOM object to do the slide down animation
  */
 function slideDown(element) {
   // Get the height of the current div and make it hidden by default
@@ -419,15 +428,19 @@ function slideDown(element) {
   requestAnimationFrame(animate);
 }
 
+/**
+ * Dropdown to show cookie/local storage history of games selected
+ * @returns DOM object
+ */
 function showHistoryDropdownMenu() {
   let dropdown = document.createElement("div");
   dropdown.className = "dropdown";
 
-  // Create dropdown button
+  // Dropdown button
   let dropdownButton = document.createElement("button");
   dropdownButton.className = "dropdown-button";
 
-  // Create dropdown content
+  // Dropdown content
   let dropdownContent = document.createElement("div");
   dropdownContent.className = "dropdown-content";
 
@@ -498,6 +511,10 @@ function showHistoryDropdownMenu() {
   return dropdown;
 }
 
+/**
+ * Button to remove cookies or local storage
+ * @returns DOM object
+ */
 function removeHistoryButton() {
   let button = document.createElement("button");
   let useCookies = false;
@@ -539,6 +556,9 @@ function removeHistoryButton() {
   return button;
 }
 
+/**
+ * Initializes web page
+ */
 function init() {
   let gameSelectionsDiv = document.getElementById("game_selections");
   gameSelectionsDiv.appendChild(generateSelectFromCurrentTree(listOfGames));
