@@ -5,11 +5,11 @@ let selectLayer = 0;
 let selectLayerCurrMessage = "Select a Genre";
 
 /**
- * 
+ *
  * @param currentPreview  - DOM object of the current media being previewed
  * @param thumbnailPreviews -  DOPM object of thumbnail previews
- * @param {String} type - "screenshots" or "video"  
- * @param {JSON} gameInfo - Current game info 
+ * @param {String} type - "screenshots" or "video"
+ * @param {JSON} gameInfo - Current game info
  */
 function populateCarouselMedia(
   currentPreview,
@@ -22,15 +22,14 @@ function populateCarouselMedia(
   carouselPreviews.style =
     "display: flex; overflow-x: auto; padding: 10px; border: 1px solid #ccc; border-radius: 5px; width: 100%;";
 
-    // Screenshot thumbnails
+  // Screenshot thumbnails
   if (type === "screenshots") {
     gameInfo.media.screenshots.forEach((media) => {
       let preview = document.createElement("img");
       preview.setAttribute("src", media.path_thumbnail);
       preview.setAttribute("width", "116");
       preview.setAttribute("height", "65");
-      preview.style =
-        "margin-right: 5px; cursor: pointer; ";
+      preview.style = "margin-right: 5px; cursor: pointer; ";
 
       // Event handler to showcase the current image that is clicked
       preview.addEventListener("click", (e) => {
@@ -58,8 +57,7 @@ function populateCarouselMedia(
       preview.setAttribute("src", media.thumbnail);
       preview.setAttribute("width", "116");
       preview.setAttribute("height", "65");
-      preview.style =
-        "margin-right: 5px; cursor: pointer;";
+      preview.style = "margin-right: 5px; cursor: pointer;";
 
       // Event handler to showcase the current image that is clicked
       preview.addEventListener("click", (e) => {
@@ -93,7 +91,7 @@ function populateCarouselMedia(
 async function showGameInfo() {
   let gameInfoDiv = document.getElementById("game_info");
 
-  // Clear previous game infos 
+  // Clear previous game infos
   gameInfoDiv.childNodes.forEach((e) => {
     // Clear previous game info before appending new one
     gameInfoDiv.removeChild(e);
@@ -103,7 +101,9 @@ async function showGameInfo() {
 
   if (!gameInfo) {
     let errorMessage = document.createElement("p");
-    errorMessage.appendChild(document.createTextNode("Game information could not be retrieved."));
+    errorMessage.appendChild(
+      document.createTextNode("Game information could not be retrieved.")
+    );
     gameInfoDiv.appendChild(errorMessage);
     return;
   }
@@ -112,7 +112,6 @@ async function showGameInfo() {
   mainDiv.style =
     "display: grid; grid-template-columns: 1fr 2fr; gap: 20px; padding: 20px; background-color: #f9f9f9; border-radius: 10px;";
 
-  
   // ***********************
   // Carousel
   // ***********************
@@ -299,16 +298,16 @@ async function showGameInfo() {
   gameInfoDiv.appendChild(mainDiv);
   slideDown(gameInfoDiv);
 
-  // Do background change animation
-  document.getElementsByTagName('body')[0].style.backgroundImage = `url(${gameInfo.background})`;
-  document.getElementsByTagName('body')[0].style.backgroundSize = "cover"; 
+  document.getElementsByTagName(
+    "body"
+  )[0].style.backgroundImage = `url(${gameInfo.background})`;
+  document.getElementsByTagName("body")[0].style.backgroundSize = "cover";
 }
-
 
 /**
  * Populates dynamic selects
- * @param {JSON} tree - Current json tree from generated data 
- * @returns 
+ * @param {JSON} tree - Current json tree from generated data
+ * @returns
  */
 function generateSelectFromCurrentTree(tree) {
   if (!tree) {
@@ -361,7 +360,7 @@ function generateSelectFromCurrentTree(tree) {
       } else {
         selectLayerCurrMessage = `You might like these games!`;
       }
-     
+
       // Create the new select and append it to the game selections div
       let newSelect = generateSelectFromCurrentTree(nextTree);
       gameSelectionsDiv.appendChild(newSelect);
@@ -532,7 +531,7 @@ function removeHistoryButton() {
     useCookies = true;
     DeleteCookie("test");
   }
-
+  // Cookies
   if (useCookies) {
     button.textContent = "Remove History from Cookies";
     button.addEventListener("click", (e) => {
@@ -546,6 +545,8 @@ function removeHistoryButton() {
       let dropdownMenu = showHistoryDropdownMenu();
       dropdownButtonDiv.appendChild(dropdownMenu);
     });
+
+    // Local storage
   } else if (window.localStorage) {
     button.textContent = "Remove History from Local Storage";
 
