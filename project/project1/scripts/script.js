@@ -112,6 +112,7 @@ async function showGameInfo() {
   mainDiv.style =
     "display: grid; grid-template-columns: 1fr 2fr; gap: 20px; padding: 20px; background-color: #f9f9f9; border-radius: 10px;";
 
+  
   // ***********************
   // Carousel
   // ***********************
@@ -297,7 +298,12 @@ async function showGameInfo() {
   mainDiv.append(right);
   gameInfoDiv.appendChild(mainDiv);
   slideDown(gameInfoDiv);
+
+  // Do background change animation
+  document.getElementsByTagName('body')[0].style.backgroundImage = `url(${gameInfo.background})`;
+  document.getElementsByTagName('body')[0].style.backgroundSize = "cover"; 
 }
+
 
 /**
  * Populates dynamic selects
@@ -355,7 +361,7 @@ function generateSelectFromCurrentTree(tree) {
       } else {
         selectLayerCurrMessage = `You might like these games!`;
       }
-
+     
       // Create the new select and append it to the game selections div
       let newSelect = generateSelectFromCurrentTree(nextTree);
       gameSelectionsDiv.appendChild(newSelect);

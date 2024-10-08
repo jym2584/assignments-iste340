@@ -119,6 +119,7 @@ async function fetchGameInfoFromStore(appId) {
             value: appId,
             description: gameInfo.short_description,
             website: gameInfo.website,
+            background: gameInfo.background,
             media: {
                 banner: gameInfo.header_image,
                 screenshots: gameInfo.screenshots,
