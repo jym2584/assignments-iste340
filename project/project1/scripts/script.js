@@ -22,14 +22,15 @@ function populateCarouselMedia(
   carouselPreviews.style =
     "display: flex; overflow-x: auto; padding: 10px; border: 1px solid #ccc; border-radius: 5px; width: 100%;";
 
+    // Screenshot thumbnails
   if (type === "screenshots") {
     gameInfo.media.screenshots.forEach((media) => {
       let preview = document.createElement("img");
-      preview.src = media.path_thumbnail;
-      preview.width = "116";
-      preview.height = "65";
+      preview.setAttribute("src", media.path_thumbnail);
+      preview.setAttribute("width", "116");
+      preview.setAttribute("height", "65");
       preview.style =
-        "margin-right: 5px; cursor: pointer;  width: 116px; height: 65px;";
+        "margin-right: 5px; cursor: pointer; ";
 
       // Event handler to showcase the current image that is clicked
       preview.addEventListener("click", (e) => {
@@ -40,9 +41,9 @@ function populateCarouselMedia(
 
         // Create new image div inside of currentPreview and show it
         let imageView = document.createElement("img");
-        imageView.src = media.path_full;
-        imageView.width = "569";
-        imageView.height = "320";
+        imageView.setAttribute("src", media.path_full);
+        imageView.setAttribute("width", "569");
+        imageView.setAttribute("height", "320");
 
         currentPreview.appendChild(imageView);
       });
@@ -50,14 +51,15 @@ function populateCarouselMedia(
     });
   }
 
+  // Video thumbnails
   if (type === "video") {
     gameInfo.media.movies.forEach((media) => {
       let preview = document.createElement("img");
-      preview.src = media.thumbnail;
-      preview.width = "116";
-      preview.height = "65";
+      preview.setAttribute("src", media.thumbnail);
+      preview.setAttribute("width", "116");
+      preview.setAttribute("height", "65");
       preview.style =
-        "margin-right: 5px; cursor: pointer; transition: transform 0.3s; width: 116px; height: 65px;";
+        "margin-right: 5px; cursor: pointer;";
 
       // Event handler to showcase the current image that is clicked
       preview.addEventListener("click", (e) => {
@@ -69,8 +71,8 @@ function populateCarouselMedia(
         // Create new image div inside of currentPreview and show it
         let videoView = document.createElement("video");
         videoView.src = media["webm"]["480"];
-        videoView.width = "569";
-        videoView.height = "320";
+        videoView.setAttribute("width", "569");
+        videoView.setAttribute("height", "320");
         videoView.controls = true;
         videoView.muted = true;
         videoView.volume = 0.25;
@@ -91,6 +93,7 @@ function populateCarouselMedia(
 async function showGameInfo() {
   let gameInfoDiv = document.getElementById("game_info");
 
+  // Clear previous game infos 
   gameInfoDiv.childNodes.forEach((e) => {
     // Clear previous game info before appending new one
     gameInfoDiv.removeChild(e);
@@ -100,14 +103,14 @@ async function showGameInfo() {
 
   if (!gameInfo) {
     let errorMessage = document.createElement("p");
-    errorMessage.textContent = "Game information could not be retrieved.";
+    errorMessage.appendChild(document.createTextNode("Game information could not be retrieved."));
     gameInfoDiv.appendChild(errorMessage);
     return;
   }
 
   let mainDiv = document.createElement("div");
   mainDiv.style =
-    "display: grid; grid-template-columns: 1fr 2fr; gap: 20px; padding: 20px; background-color: #f9f9f9; border-radius: 10px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);";
+    "display: grid; grid-template-columns: 1fr 2fr; gap: 20px; padding: 20px; background-color: #f9f9f9; border-radius: 10px;";
 
   // ***********************
   // Carousel
@@ -123,14 +126,14 @@ async function showGameInfo() {
   // Slideshows
   let thumbnailPreviews = document.createElement("div"); // list of thumbnails
   thumbnailPreviews.style =
-    "display: flex; flex-wrap: nowrap; justify-content: start; overflow-x: scroll; width: 569px;";
+    "display: flex; flex-wrap: nowrap; justify-content: start;  width: 569px;";
 
   // Buttons
   let buttonsControls = document.createElement("div");
   buttonsControls.style = "display: flex; margin-top: 10px;";
 
   let videosButton = document.createElement("button");
-  videosButton.textContent = "Videos";
+  videosButton.appendChild(document.createTextNode("Videos"));
   videosButton.addEventListener("click", (e) => {
     thumbnailPreviews.childNodes.forEach((child) => {
       thumbnailPreviews.removeChild(child);
@@ -139,7 +142,7 @@ async function showGameInfo() {
   });
 
   let screenshotsButton = document.createElement("button");
-  screenshotsButton.textContent = "Screenshots";
+  screenshotsButton.appendChild(document.createTextNode("Screenshots"));
   screenshotsButton.style.backgroundColor = "green";
   screenshotsButton.addEventListener("click", (e) => {
     thumbnailPreviews.childNodes.forEach((child) => {
