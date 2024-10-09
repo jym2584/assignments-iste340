@@ -9,6 +9,63 @@
             window.location = "legacy.html";
         }
     </script>
+    <style>
+        .error {
+            border: 2px solid red;
+        }
+
+        input:disabled {
+            background-color: grey;
+            cursor: not-allowed;
+        }
+    </style>
+    <script>
+
+        // Validates email address. Source: https://stackoverflow.com/a/46181
+        let validateEmail = (email) => { 
+            return String(email)
+              .toLowerCase()
+              .match(
+                /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+              );
+          };
+
+        function handleForm() {
+            
+            let valid = true;
+            let nameInput = document.forms[0].elements['name'];
+            let emailInput = document.forms[0].elements['email'];
+            let messageTag = document.getElementById('input-result');
+
+            nameInput.style = "";
+            emailInput.style = "";
+            messageTag.textContent = "";
+
+            if (nameInput.value == "") {  // name
+                nameInput.style = "border: 2px solid red;"
+                messageTag.textContent = "Input a valid name"
+                valid = false;
+            }
+
+            if (emailInput.value == "" || !validateEmail(emailInput.value)) { // email address 
+                valid = false;
+                if (messageTag.textContent) {
+                    messageTag.textContent = `${messageTag.textContent} and email address`;
+                } else {
+                    messageTag.textContent = "Input a valid email address";
+                }
+                emailInput.style = "border: 2px solid red;"
+            }
+
+            if (valid) {
+                messageTag.textContent = `Thanks ${nameInput.value}! An email will be sent to: ${emailInput.value}`;
+            }
+
+            return false; // dont redirect
+
+        }        
+    </script>
+
     <link rel="stylesheet" href="app.css">
     <script src="scripts/cookies.js"></script>
     <script src="scripts/data_setup.js"></script>
@@ -16,6 +73,23 @@
 </head>
 
 <body onload="init();">
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <button id="closeModal">Close Modal</button>
+            <h1>
+                Get emails from me for a more detailed recommendation about this game!
+            </h1>
+            <form onsubmit="return handleForm()">
+                Enter your name: <input type="text" name='name' placeholder="Name" /><br/>
+                Email address: <input type="text" name='email' placeholder="Email address" /><br/>
+    
+                <input type="submit" value="Get Reminders"/><br/>
+            </form>
+            <p id="input-result"></p>
+        </div>
+    </div>
+
+    </div>
     <div id="app_grid">
         <div id="header">
             <b>Game Recommendations</b>
