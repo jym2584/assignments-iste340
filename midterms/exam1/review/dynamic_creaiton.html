@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script>
+            function doIt() {
+                consolelog("that");
+            }
+
+            function doThat(arg) {
+                console.log(arg);
+            }
+            function init() {
+                // getters/setters
+                // document.getElementById, getElementsByTagName, getElementsByName, getElementsByClassname
+                
+                // creation
+                // createElement, setAttribute, createTextNode
+                
+                // placement
+                // appendChild, removeChild, replaceChild, cloneNode
+                let doc = document.createElement('button');
+                doc.setAttribute('id', 'test');
+                doc.appendChild(document.createTextNode('press me'));
+                // <button id="test>press me</button>
+
+                document.getElementsByTagName('body')[0].appendChild(doc);
+                x.onclick = doIt; // "this"
+                x.setAttribute('onmouseover', 'doIt()'); // window object
+                //x.onmouseout = doThat('args'); //  executes when it read. need to wrap
+                x.onmouseout = function() {doThat('args')}; // This is good instead, need wrapper or lambda
+
+                
+            }
+        </script>
+    </head>
+    <body>
+        <p>Text</p> <!-- document.getElementsByTagName('p')[0].firstChild.nodeValue-->
+        <div>
+            <p>one</p>
+            <p>two</p>
+        </div>
+
+    </body>
+</html>

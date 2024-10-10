@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script>
+            function validate() {
+                // test if val is good
+                
+                return false;
+            }
+        </script>
+    </head>
+    <body>
+        <form onsubmit="return validate();">
+            <input type="text" placeholder="give name" name="fn"/>
+            <input type='submit' value="click me">
+        </form>
+    </body>
+</html>
