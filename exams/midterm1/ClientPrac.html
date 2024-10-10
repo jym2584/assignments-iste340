@@ -147,7 +147,19 @@ document.write, textContent, innerText and innerHTML wont get any points!!!-->
 			
 			(any part of this is wrong, and you don't get the point)*/
 		function createColumn() {
+			let table = document.getElementsByTagName('table')[0];
+			let rows = table.getElementsByTagName('tr');
+			console.log(rows.length);
 
+			for (let i = 0, len=rows.length; i < len; i++) {
+				let row = rows[i];
+				let cell = document.createElement('td');
+				cell.appendChild(document.createTextNode('beginning text'));
+				cell.addEventListener('click', () => {
+					clickedTd(cell);
+				});
+				row.appendChild(cell);
+			}
 		}
 			
 			
@@ -178,7 +190,7 @@ document.write, textContent, innerText and innerHTML wont get any points!!!-->
 	</p>
 
 	<p>
-		Create new column for each row (extra credit): <input type="button" value="create column"/>	
+		Create new column for each row (extra credit): <input type="button" value="create column" onclick="createColumn()"/>	
 	</p>
 </form>
 <table style="position:absolute">
