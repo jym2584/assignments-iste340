@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+<!--feel free to add any attributes you wish (like id!)  You can't to add any tags...
+Remember you need to get this to work in Chrome (don't worry about any other browser)
+document.write, textContent, innerText and innerHTML wont get any points!!!-->  
+	<title>practical-JS</title>
+	<style type="text/css"> 
+		body{font-family:times}
+		td{
+			border-style:solid;border-width:2px;padding:4px;
+		}
+	</style>
+	<script>
+		/*1)Write a function that is called when the 'move!' button is clicked.  
+	    The function 
+	    	1.a)moves the table to the location denoted in the Left: and Top: inputs.  
+	    	1.b)Store the left and top values into localStorage*/
+		function move() {
+			let left = document.getElementById('left').value;
+			let top = document.getElementById('top').value;
+			console.log(`Left '${left}'`);
+			console.log(`Top: ${top}`);
+			let table = document.getElementsByTagName('table')[0];
+			/**
+			 * 1a
+			*/
+			table.style.top = top;
+			table.style.left = left;
+			/**
+			 * 1b
+			*/
+			localStorage.setItem('top', top);
+			localStorage.setItem('left', left);
+
+		}
+
+
+		/*2)Write a function below that onload of the document will:
+	    	2.a) If there is localStorage holding the left and/or top from the 'Move the table:' 
+	    	inputs from a previous visit, put the values back into the Left: and Top: inputs AND 
+	    	place the table to the recorded position (place it, don't animate it).
+	    	2.b) create a text node containing 'Verdana', make it green and place it in front 
+	    	of the radio button that has no text. Must look like the example for full credit*/
+		function init() {
+			/**
+			 * 2a
+			*/
+			let leftField = document.getElementById('left');
+			let topField = document.getElementById('top');
+
+			let left = localStorage.getItem('left');
+			let top = localStorage.getItem('top');
+
+			let table = document.getElementsByTagName('table')[0];
+			if (left && top) {
+				leftField.setAttribute('value', left);
+				topField.setAttribute('value', top);
+
+				table.style.top = top;
+				table.style.left = left;
+			}
+
+			/**
+			 * 2b
+			*/
+			let textNode = document.createTextNode('Veranda');
+			textNode.style = 'color: green;';
+			let verdanaButton = document.getElementById('before');
+			console.log(verdanaButton);
+			verdanaButton.insertBefore(textNode, verdanaButton.firstChild);
+		}
+		
+		/*3)When the user clicks on any <td>, call a function that 
+	    	3.a)takes the text from the input and place it into the clicked <td> 
+	    	3.b)then takes the font-family designated by the radio buttons and sets 
+			the font-family of the <td>*/
+		function clickedTd(clickedElement) {
+			/**
+			 * 3a
+			*/
+			let inputtedText = document.getElementById('textChange').value;
+
+			// set text node
+
+			clickedElement.textContent = inputtedText;
+			/**
+			 * 3b
+			*/
+			let inputTags = document.getElementsByTagName('input');
+			for (const element of inputTags) {
+				if (element.type == "radio" && element.checked) {
+					clickedElement.style.fontFamily = element.value;
+					break;
+				}
+			}
+
+
+		}
+
+		
+
+		/*4)Write a function below that will create a new 'row'.  A row is defined as a tr 
+	   	with as many td's inside of it as columns (2 if you don't do the 
+	   	extra credit).  Each 'cell' in the row will start with 'beginning text' as it's text AND the 
+	   	font-family of times. You will also have to give each an onclick event that will call the 
+	   	function in part 3 above and allow the text and it's font-family to change.*/
+		function createRow() {
+			let table = document.getElementsByTagName('table')[0];
+			let columns = table.getElementsByTagName('tr')[0].getElementsByTagName('td').length;
+			// create a row with that many columns
+			let row = document.createElement('tr');
+
+			for (let i = 0; i < columns; i++) {
+				let cell = document.createElement('td');
+				cell.appendChild(document.createTextNode('beginning text'));
+				cell.addEventListener('click', () => {
+					clickedTd(cell);
+				});
+				row.appendChild(cell);
+			}
+
+			table.appendChild(row);
+		}
+
+		
+		/*Extra Credit:  (be sure you are done with all else before you try this!)
+			-Uncomment the <p> tag below that has the input inside of it
+			-Create an onclick event on the button WITHOUT adding an HTML attribute
+			
+			-When the button is clicked, call a function that will create a new column
+			for the table.  Each cell should have 'beginning text' in it as you create it as 
+			well as the font being in times, and each row AND column must work correctly (if I alternate 
+			between clicking on the two buttons, each row AND column must have complete inside of 
+			the table.)  All cells will take the new text and font-family when they are clicked.
+			
+			(any part of this is wrong, and you don't get the point)*/
+			
+			
+
+	</script>
+</head>
+<body onload="init()">
+<form>
+	Move the table:<br/>
+	Left: <input type="text" id="left"/><br/>
+	Top: <input type="text" id="top"/><br/>
+	<input type="button" value="move!" onclick="move()"/>
+	<hr/>
+	Text to go into clicked &lt;td&gt;:<br/>
+	<input type="text" id="textChange" value="beginning text"/><br/>
+	<p>
+	font-family for td:<br/>
+	Times<input type="radio" name="ff" value="times" checked="checked"/><br/>
+	Comic sans ms<input type="radio" name="ff"  value="comic sans ms"/><br/>
+	<input type="radio" name="ff" value="Verdana" id="before"/><br/>
+	Courier New<input type="radio" name="ff" value="courier new"/><br/>
+	Brush Script MT<input type="radio" name="ff" value="brush script mt"/><br/>
+	Impact<input type="radio" name="ff" value="impact"/><br/>
+	</p>
+	<hr/>
+	<p>
+		Create another 'row':<input type="button" value="create row" onclick="createRow()"/>
+	</p>
+	<!--for the extra credit - uncomment below if you try it!
+	<p>
+		Create new column for each row (extra credit): <input type="button" value="create column"/>	
+	</p>
+	-->
+</form>
+<table style="position:absolute">
+	<tr>
+	  <td onclick="clickedTd(this)">beginning text</td>
+	  <td onclick="clickedTd(this)">beginning text</td>
+	</tr>
+	<tr>
+	  <td onclick="clickedTd(this)">beginning text</td>
+	  <td onclick="clickedTd(this)">beginning text</td>
+	</tr>
+</table>
+
+<!--- Below is for instructions! --->
+<div style="position:absolute;bottom:10px;right:10px;border-style:dotted;border-width:2px;">
+	*<span style="color:green">Green</span> text is dynamically created on load of page<br/>
+	*Extra credit button is commented out (uncomment if you want to try)<br/>
+	<span style="position:relative;left:10px;">-for full credit both rows and columns must work</span><br/>
+	<span style="position:relative;left:10px;">-Extra credit is NASTY, finish all else first</span><br/>
+</div>
+</body>
+</html>
