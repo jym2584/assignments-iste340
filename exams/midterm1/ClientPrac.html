@@ -65,11 +65,17 @@ document.write, textContent, innerText and innerHTML wont get any points!!!-->
 			/**
 			 * 2b
 			*/
+			let fontFamilyNode = document.getElementsByTagName('p')[0];
+
+			// Create text
+			let verdanaText = document.createElement('span');
 			let textNode = document.createTextNode('Veranda');
-			textNode.style = 'color: green;';
+			verdanaText.appendChild(textNode);
+			verdanaText.style = 'color: green;';
+			
+			// Insert text before button
 			let verdanaButton = document.getElementById('before');
-			console.log(verdanaButton);
-			verdanaButton.insertBefore(textNode, verdanaButton.firstChild);
+			fontFamilyNode.insertBefore(verdanaText, verdanaButton);
 		}
 		
 		/*3)When the user clicks on any <td>, call a function that 
@@ -82,9 +88,13 @@ document.write, textContent, innerText and innerHTML wont get any points!!!-->
 			*/
 			let inputtedText = document.getElementById('textChange').value;
 
-			// set text node
+			// remove all child nodes
+			clickedElement.childNodes.forEach( element => {
+				clickedElement.removeChild(element);
+			});
 
-			clickedElement.textContent = inputtedText;
+			// add text node
+			clickedElement.appendChild(document.createTextNode(inputtedText));
 			/**
 			 * 3b
 			*/
@@ -136,6 +146,9 @@ document.write, textContent, innerText and innerHTML wont get any points!!!-->
 			the table.)  All cells will take the new text and font-family when they are clicked.
 			
 			(any part of this is wrong, and you don't get the point)*/
+		function createColumn() {
+
+		}
 			
 			
 
@@ -163,11 +176,10 @@ document.write, textContent, innerText and innerHTML wont get any points!!!-->
 	<p>
 		Create another 'row':<input type="button" value="create row" onclick="createRow()"/>
 	</p>
-	<!--for the extra credit - uncomment below if you try it!
+
 	<p>
 		Create new column for each row (extra credit): <input type="button" value="create column"/>	
 	</p>
-	-->
 </form>
 <table style="position:absolute">
 	<tr>
