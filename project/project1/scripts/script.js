@@ -290,6 +290,16 @@ async function showGameInfo() {
     right.appendChild(gameWebsite);
   }
 
+  let openModalButton = document.createElement('button');
+  openModalButton.textContent = "Get reminders on this game!"
+  openModalButton.onclick = function() {
+    let modal = document.getElementById("myModal");
+    modal.style.display = "block";
+  }
+
+  right.appendChild(openModalButton)
+
+
   // ***********************
   // Attach everything together
   // ***********************
@@ -580,4 +590,10 @@ function init() {
   document
     .getElementById("delete_button_div")
     .appendChild(removeHistoryButton());
+    
+  let modal = document.getElementById("myModal");
+  let closeModalButton = document.getElementById("closeModal");
+  closeModalButton.addEventListener('click', function() {
+      modal.style.display = 'none';
+  })
 }
