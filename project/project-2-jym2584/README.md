@@ -1,8 +1,13 @@
-# React + Vite
+# project-2-jym2584
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## React Components used:
+- react-router-dom
+    - Got this from npm. I think navigation is pretty powerful in being able to display various components separately such as people, employment, etc.
+- react-material-ui-carousel
+    - Got this from npm. I used this for one of my course projects (SWEN-343) and I really liked this component. I was able to make this different by having text slide on the employment page
+- react-map-gl
+    - Used for the employment page to aggregate geolocation data and mapping it out with a list of employers based on the city
+        https://github.com/brillout/awesome-react-components?tab=readme-ov-file#map
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+        Integrated some developer samples (including pin icon) from this repository:
+        https://github.com/visgl/react-map-gl
