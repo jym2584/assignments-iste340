@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Card, CardContent, CircularProgress, Typography, Divider, Avatar } from '@mui/material';
-import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import { Box, Card, CardContent, CircularProgress, Typography, Divider } from '@mui/material';
 import getData from '../utils/getData';
 
 

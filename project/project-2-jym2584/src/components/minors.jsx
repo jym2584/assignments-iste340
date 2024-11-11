@@ -5,7 +5,6 @@ import {
   AccordionSummary,
   AccordionDetails,
   Typography,
-  List,
   Button,
   Divider,
   CircularProgress,

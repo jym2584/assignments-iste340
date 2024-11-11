@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Accordion, AccordionSummary, AccordionDetails, Card, CardContent, Typography, List, ListItem, ListItemText, CircularProgress, Divider } from '@mui/material';
+import { Box, Accordion, AccordionSummary, AccordionDetails, CardContent, Typography, List, ListItem, ListItemText, CircularProgress, Divider } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import getData from '../utils/getData';
 

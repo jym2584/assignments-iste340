@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Typography, Box, CircularProgress, Grid, Card, CardMedia, CardContent, Dialog, DialogActions, DialogContent, DialogTitle, Button } from "@mui/material";
+import { Typography, Box, CircularProgress, Grid2 as Grid, Card, CardMedia, CardContent, Dialog, DialogActions, DialogContent, DialogTitle, Button } from "@mui/material";
 import getData from "../utils/getData";
 
 function NewsPage() {
@@ -41,10 +41,10 @@ function NewsPage() {
             </Typography>
 
             {/* News Cards */}
-            <Grid container spacing={3}>
+            <Grid container spacing={3} size={15}>
                 {data.older.map((item, index) => (
-                    <Grid item xs={12} sm={6} md={4}>
-                        <Card sx={{ height: '100%' }} onClick={() => handleOpen(item, index)}>
+                    <Grid item size={3}>
+                        <Card sx={{ height: '100%' }} style={{ cursor: 'pointer' }} onClick={() => handleOpen(item, index)}>
                             <CardMedia
                                 component="img"
                                 height="140"
