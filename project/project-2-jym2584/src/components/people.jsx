@@ -4,37 +4,10 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { CircularProgress } from '@mui/material';
 import getData from '../utils/getData';
 
-function People() {
-  const [data, setData] = useState(null);
-
-  // Fetch people data from the API
-  useEffect(() => {
-    getData('people/').then((json) => {
-        setData(json);
-      });
-  }, []);
-
-  // Show loading while data is still being fetched
-  if (!data) {
-    return (
-      <Box display="flex" justifyContent="center" alignItems="center" minHeight="80vh">
-        <CircularProgress />
-      </Box>
-    );
-  }
-
+function PeopleAccordion({facultyType}) {
   return (
-    <Box sx={{ padding: 2, maxWidth: '90%', margin: '0 auto' }}>
-      <Typography variant="h4" gutterBottom color="primary" align="center">
-        {data.title}
-      </Typography>
-      <Typography variant="subtitle1" align="center">
-        {data.subTitle}
-      </Typography>
-
-      {/* Setup faculty data */}
       <Grid container spacing={2}>
-        {data.faculty.map((facultyMember) => (
+        {facultyType.map((facultyMember) => (
           <Grid item xs={12} sm={6} md={3}>
             <Accordion>
                 {/* Faculty name and avatar */}
@@ -100,6 +73,42 @@ function People() {
           </Grid>
         ))}
       </Grid>
+  )
+}
+
+function People() {
+  const [data, setData] = useState(null);
+
+  // Fetch people data from the API
+  useEffect(() => {
+    getData('people/').then((json) => {
+        setData(json);
+      });
+  }, []);
+
+
+  // Show loading while data is still being fetched
+  if (!data) {
+    return (
+      <Box display="flex" justifyContent="center" alignItems="center" minHeight="80vh">
+        <CircularProgress />
+      </Box>
+    );
+  }
+
+  return (
+    <Box sx={{ padding: 2, maxWidth: '90%', margin: '0 auto' }}>
+      <Typography variant="h4" gutterBottom color="primary" align="center">
+        {data.title}
+      </Typography>
+      <Typography variant="subtitle1" align="center">
+        {data.subTitle}
+      </Typography>
+
+      <Typography variant='h4'>Faculty</Typography>
+      <PeopleAccordion facultyType={data.faculty}/>
+      <Typography variant='h4' sx={{marginTop: '30px'}}>Staff</Typography>
+      <PeopleAccordion facultyType={data.staff}/>
     </Box>
   );
 }
