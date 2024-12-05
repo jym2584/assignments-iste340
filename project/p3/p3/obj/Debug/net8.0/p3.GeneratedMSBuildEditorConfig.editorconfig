@@ -24,8 +24,24 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[E:/GitHub/assignments-iste340/project/p3/p3/Views/Home/Course.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDb3Vyc2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/GitHub/assignments-iste340/project/p3/p3/Views/Home/Employment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFbXBsb3ltZW50LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [E:/GitHub/assignments-iste340/project/p3/p3/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/GitHub/assignments-iste340/project/p3/p3/Views/Home/News.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxOZXdzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[E:/GitHub/assignments-iste340/project/p3/p3/Views/Home/People.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQZW9wbGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [E:/GitHub/assignments-iste340/project/p3/p3/Views/Home/Privacy.cshtml]

@@ -6,6 +6,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { ThemeProvider } from '@emotion/react';
 import { createTheme } from '@mui/material';
 
+
 const theme = createTheme({
   palette: {
     primary: {

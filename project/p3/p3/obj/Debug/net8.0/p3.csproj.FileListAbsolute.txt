@@ -62,10 +62,10 @@ E:\GitHub\assignments-iste340\project\p3\p3\obj\Debug\net8.0\staticwebassets\msb
 E:\GitHub\assignments-iste340\project\p3\p3\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.p3.props
 E:\GitHub\assignments-iste340\project\p3\p3\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.p3.props
 E:\GitHub\assignments-iste340\project\p3\p3\obj\Debug\net8.0\staticwebassets.pack.json
-E:\GitHub\assignments-iste340\project\p3\p3\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 E:\GitHub\assignments-iste340\project\p3\p3\obj\Debug\net8.0\p3.csproj.Up2Date
 E:\GitHub\assignments-iste340\project\p3\p3\obj\Debug\net8.0\p3.dll
 E:\GitHub\assignments-iste340\project\p3\p3\obj\Debug\net8.0\refint\p3.dll
 E:\GitHub\assignments-iste340\project\p3\p3\obj\Debug\net8.0\p3.pdb
 E:\GitHub\assignments-iste340\project\p3\p3\obj\Debug\net8.0\p3.genruntimeconfig.cache
 E:\GitHub\assignments-iste340\project\p3\p3\obj\Debug\net8.0\ref\p3.dll
+E:\GitHub\assignments-iste340\project\p3\p3\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

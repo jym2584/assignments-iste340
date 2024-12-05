@@ -1,7 +1,8 @@
 // Proxy servers
 // https://solace.ist.rit.edu/~dsbics/proxy/
 // https://people.rit.edu/~dsbics/proxy/
-const proxyServer = "https://apcekwbz63.execute-api.us-east-2.amazonaws.com/iste340/proxy?url="
+// Personal proxy server: "https://apcekwbz63.execute-api.us-east-2.amazonaws.com/iste340/proxy?url="
+const proxyServer = "https://people.rit.edu/~dsbics/proxy/"
 const iSchoolApiUrl = "https://ischool.gccis.rit.edu/api"
 const apiUrl = `${proxyServer}${iSchoolApiUrl}/`
 

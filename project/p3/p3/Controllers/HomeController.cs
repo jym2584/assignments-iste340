@@ -23,8 +23,8 @@ namespace p3.Controllers
         //public async IActionResult About()
         public async Task<IActionResult> About()
         {
-           //load a dr
-           DataRetrieval dr = new DataRetrieval();
+            //load a dr
+            DataRetrieval dr = new DataRetrieval();
             //call the method
             var AboutString = await dr.GetData("about/");
             //next steps
@@ -38,6 +38,120 @@ namespace p3.Controllers
 
             return View(aboutResult);
         }
+
+        public async Task<IActionResult> Course()
+        {
+            //load a dr
+            DataRetrieval dr = new DataRetrieval();
+            //call the method
+            var data = await dr.GetData("course/");
+            //next steps
+            /*
+             * build about model
+             * cast to json
+             * feed it to the view
+             */
+            var result = JsonConvert.DeserializeObject<CourseModel>(data);
+            return View(result);
+        }
+
+
+        public async Task<IActionResult> Degrees()
+        {
+            //load a dr
+            DataRetrieval dr = new DataRetrieval();
+            //call the method
+            var data = await dr.GetData("degrees/");
+            //next steps
+            /*
+             * build about model
+             * cast to json
+             * feed it to the view
+             */
+            var result = JsonConvert.DeserializeObject<DegreesModel>(data);
+            return View(result);
+        }
+
+        public async Task<IActionResult> Employment()
+        {
+            //load a dr
+            DataRetrieval dr = new DataRetrieval();
+            //call the method
+            var data = await dr.GetData("employment/");
+            //next steps
+            /*
+             * build about model
+             * cast to json
+             * feed it to the view
+             */
+            var result = JsonConvert.DeserializeObject<EmploymentModel>(data);
+            return View(result);
+        }
+
+        public async Task<IActionResult> Footer()
+        {
+            //load a dr
+            DataRetrieval dr = new DataRetrieval();
+            //call the method
+            var data = await dr.GetData("footer/");
+            //next steps
+            /*
+             * build about model
+             * cast to json
+             * feed it to the view
+             */
+            var result = JsonConvert.DeserializeObject<FooterModel>(data);
+            return View(result);
+        }
+
+        public async Task<IActionResult> Minors()
+        {
+            //load a dr
+            DataRetrieval dr = new DataRetrieval();
+            //call the method
+            var data = await dr.GetData("minors/");
+            //next steps
+            /*
+             * build about model
+             * cast to json
+             * feed it to the view
+             */
+            var result = JsonConvert.DeserializeObject<MinorsModel>(data);
+            return View(result);
+        }
+        public async Task<IActionResult> NewsModel()
+        {
+            //load a dr
+            DataRetrieval dr = new DataRetrieval();
+            //call the method
+            var data = await dr.GetData("news/");
+            //next steps
+            /*
+             * build about model
+             * cast to json
+             * feed it to the view
+             */
+            var result = JsonConvert.DeserializeObject<NewsModel>(data);
+            return View(result);
+        }
+
+        public async Task<IActionResult> People()
+        {
+            //load a dr
+            DataRetrieval dr = new DataRetrieval();
+            //call the method
+            var data = await dr.GetData("people/");
+            //next steps
+            /*
+             * build about model
+             * cast to json
+             * feed it to the view
+             */
+            var result = JsonConvert.DeserializeObject<PeopleModel>(data);
+            return View(result);
+        }
+
+
 
         public IActionResult Privacy()
         {

@@ -2,21 +2,25 @@ import { useState } from 'react'
 import './App.css'
 import getData from './utils/getData.js';
 import { useEffect } from 'react';
-
 import { Box, Toolbar, Typography, AppBar, Button, Grid2 as Grid, Divider, IconButton, CircularProgress, Link } from '@mui/material';
-
-
 import TwitterIcon from '@mui/icons-material/Twitter';
 import FacebookIcon from '@mui/icons-material/Facebook';
-
-
 import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-
 import MainPage from './pages/MainPage.jsx';
 import CoursesPage from './pages/CoursesPage.jsx';
 import EmploymentsPage from './pages/EmploymentsPage.jsx';
 import StaffDirectoryPage from './pages/StaffDirectory.jsx';
 import NewsPage from './pages/NewsPage.jsx';
+
+
+/**
+ * Used for setting the path relative to where the site will be hosted at
+ * 
+ * (should be the same as vite.config.js)
+ * 
+ * For local dev this can just be set as an empty string ("")
+ */
+const PEOPLE_RIT_EDU_PATH = "/jym2584/iste340/project2"
 
 // App bar settings;
 const appBarHeight = '64px';
@@ -53,11 +57,11 @@ function WebsiteAppBar() {
           iSchool
         </Typography>
         <Box sx={{ flexGrow: 1 }} /> {/* This will push the buttons to the right */}
-        <NavigationButton path="/" text="Home" />
-        <NavigationButton path="/courses" text="Courses" />
-        <NavigationButton path="/employment" text="Employment" />
-        <NavigationButton path="/staff" text="Staff Directory" />
-        <NavigationButton path="/news" text="News" />
+        <NavigationButton path={PEOPLE_RIT_EDU_PATH + "/"} text="Home" />
+        <NavigationButton path={PEOPLE_RIT_EDU_PATH +"/courses"} text="Courses" />
+        <NavigationButton path={PEOPLE_RIT_EDU_PATH +"/employment"} text="Employment" />
+        <NavigationButton path={PEOPLE_RIT_EDU_PATH +"/staff"} text="Staff Directory" />
+        <NavigationButton path={PEOPLE_RIT_EDU_PATH +"/news"} text="News" />
       </Toolbar>
     </AppBar>
   )
@@ -157,11 +161,11 @@ function App() {
         <WebsiteAppBar />
         <Box component="main" sx={{ flexGrow: 1, p: 3, mt: `${appBarHeight}` }} >
           <Routes>
-            <Route path="/" element={<MainPage />} />
-            <Route path="/courses" element={<CoursesPage />} />
-            <Route path="/employment" element={<EmploymentsPage />} />
-            <Route path="/staff" element={<StaffDirectoryPage />} />
-            <Route path="/news" element={<NewsPage />} />
+            <Route path={PEOPLE_RIT_EDU_PATH + "/"} element={<MainPage />} />
+            <Route path={PEOPLE_RIT_EDU_PATH + "/courses"} element={<CoursesPage />} />
+            <Route path={PEOPLE_RIT_EDU_PATH + "/employment"} element={<EmploymentsPage />} />
+            <Route path={PEOPLE_RIT_EDU_PATH + "/staff"} element={<StaffDirectoryPage />} />
+            <Route path={PEOPLE_RIT_EDU_PATH + "/news"} element={<NewsPage />} />
           </Routes>
         </Box>
       </Box>
