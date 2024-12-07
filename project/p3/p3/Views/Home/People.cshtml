@@ -4,67 +4,170 @@
     ViewData["Title"] = "People Page";
 }
 
-<!-- Add necessary CSS and jQuery UI links -->
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
 
-<div class="container">
-    <h1 class="text-center mt-4">@Model.title</h1>
-    <p class="text-center">@Model.subTitle</p>
+    #testAcc {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+    }
 
-    <!-- Accordion for Faculty -->
-    <h2 class="mt-5">Our Faculty</h2>
-    <div id="accordion">
-        @foreach (var faculty in Model.faculty)
+    .section-title {
+        font-size: 1.8em;
+        margin-bottom: 20px;
+        padding-bottom: 5px;
+        border-bottom: 2px solid #ddd;
+    }
+
+    .person-section {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .person-card {
+        flex: 1 1 calc(33.333% - 20px);
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: #fff;
+        overflow: hidden;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 15px;
+    }
+
+        .person-card img {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            margin-bottom: 10px;
+        }
+
+    .person-header {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+        .person-header h5 {
+            font-size: 1.2em;
+            margin: 0;
+        }
+
+        .person-header p {
+            font-size: 0.9em;
+            color: gray;
+            margin: 0;
+        }
+
+    .person-details p {
+        margin: 5px 0;
+        font-size: 0.9em;
+    }
+
+    .person-details a {
+        color: #007BFF;
+        text-decoration: none;
+    }
+
+        .person-details a:hover {
+            text-decoration: underline;
+        }
+</style>
+
+<div id="testAcc">
+    <h3 class="section-title">Faculty</h3>
+    <div class="person-section">
+        @foreach (var faculty in @Model.faculty)
         {
-            <h3>@faculty.name (@faculty.title)</h3>
-            <div>
-                <p><strong>Tagline:</strong> @faculty.tagline</p>
-                <p><strong>Interests:</strong> @faculty.interestArea</p>
-                <p><strong>Office:</strong> @faculty.office</p>
-                @if (!string.IsNullOrEmpty(faculty.website))
-                {
-                    <p><strong>Website:</strong> <a href="@faculty.website" target="_blank">@faculty.website</a></p>
-                }
-                <p><strong>Phone:</strong> @faculty.phone</p>
-                <p><strong>Email:</strong> <a href="mailto:@faculty.email">@faculty.email</a></p>
-                @if (!string.IsNullOrEmpty(faculty.twitter))
-                {
-                    <p><strong>Twitter:</strong> <a href="https://twitter.com/@faculty.twitter" target="_blank">@faculty.twitter</a></p>
-                }
-                @if (!string.IsNullOrEmpty(faculty.facebook))
-                {
-                    <p><strong>Facebook:</strong> <a href="@faculty.facebook" target="_blank">@faculty.facebook</a></p>
-                }
+            <div class="person-card">
+                <div class="person-header">
+                    <img src="@faculty.imagePath" alt="@faculty.name" />
+                    <div>
+                        <h5>@faculty.name</h5>
+                        <p>@faculty.title</p>
+                    </div>
+                </div>
+                <div class="person-details">
+                    @if (!string.IsNullOrEmpty(faculty.interestArea))
+                    {
+                        <p><strong>Interests:</strong> @faculty.interestArea</p>
+                    }
+                    @if (!string.IsNullOrEmpty(faculty.office))
+                    {
+                        <p><strong>Office:</strong> @faculty.office</p>
+                    }
+                    @if (!string.IsNullOrEmpty(faculty.website))
+                    {
+                        <p><strong>Website:</strong> <a href="@faculty.website" target="_blank">@faculty.website</a></p>
+                    }
+                    @if (!string.IsNullOrEmpty(faculty.phone))
+                    {
+                        <p><strong>Phone:</strong> @faculty.phone</p>
+                    }
+                    @if (!string.IsNullOrEmpty(faculty.email))
+                    {
+                        <p><strong>Email:</strong> <a href="mailto:@faculty.email">@faculty.email</a></p>
+                    }
+                    @if (!string.IsNullOrEmpty(faculty.twitter))
+                    {
+                        <p><strong>Twitter:</strong> <a href="https://twitter.com/@faculty.twitter" target="_blank">@faculty.twitter</a></p>
+                    }
+                    @if (!string.IsNullOrEmpty(faculty.facebook))
+                    {
+                        <p><strong>Facebook:</strong> <a href="https://facebook.com/@faculty.facebook" target="_blank">@faculty.facebook</a></p>
+                    }
+                </div>
             </div>
         }
     </div>
 
-    <!-- Accordion for Staff -->
-    <h2 class="mt-5">Our Staff</h2>
-    <div id="accordion">
-        @foreach (var staff in Model.staff)
+    <h3 class="section-title">Staff</h3>
+    <div class="person-section">
+        @foreach (var staff in @Model.staff)
         {
-            <h3>@staff.name (@staff.title)</h3>
-            <div>
-                <p><strong>Tagline:</strong> @staff.tagline</p>
-                <p><strong>Interests:</strong> @staff.interestArea</p>
-                <p><strong>Office:</strong> @staff.office</p>
-                @if (!string.IsNullOrEmpty(staff.website))
-                {
-                    <p><strong>Website:</strong> <a href="@staff.website" target="_blank">@staff.website</a></p>
-                }
-                <p><strong>Phone:</strong> @staff.phone</p>
-                <p><strong>Email:</strong> <a href="mailto:@staff.email">@staff.email</a></p>
-                @if (!string.IsNullOrEmpty(staff.twitter))
-                {
-                    <p><strong>Twitter:</strong> <a href="https://twitter.com/@staff.twitter" target="_blank">@staff.twitter</a></p>
-                }
-                @if (!string.IsNullOrEmpty(staff.facebook))
-                {
-                    <p><strong>Facebook:</strong> <a href="@staff.facebook" target="_blank">@staff.facebook</a></p>
-                }
+            <div class="person-card">
+                <div class="person-header">
+                    <img src="@staff.imagePath" alt="@staff.name" />
+                    <div>
+                        <h5>@staff.name</h5>
+                        <p>@staff.title</p>
+                    </div>
+                </div>
+                <div class="person-details">
+                    @if (!string.IsNullOrEmpty(staff.interestArea))
+                    {
+                        <p><strong>Interests:</strong> @staff.interestArea</p>
+                    }
+                    @if (!string.IsNullOrEmpty(staff.office))
+                    {
+                        <p><strong>Office:</strong> @staff.office</p>
+                    }
+                    @if (!string.IsNullOrEmpty(staff.website))
+                    {
+                        <p><strong>Website:</strong> <a href="@staff.website" target="_blank">@staff.website</a></p>
+                    }
+                    @if (!string.IsNullOrEmpty(staff.phone))
+                    {
+                        <p><strong>Phone:</strong> @staff.phone</p>
+                    }
+                    @if (!string.IsNullOrEmpty(staff.email))
+                    {
+                        <p><strong>Email:</strong> <a href="mailto:@staff.email">@staff.email</a></p>
+                    }
+                    @if (!string.IsNullOrEmpty(staff.twitter))
+                    {
+                        <p><strong>Twitter:</strong> <a href="https://twitter.com/@staff.twitter" target="_blank">@staff.twitter</a></p>
+                    }
+                    @if (!string.IsNullOrEmpty(staff.facebook))
+                    {
+                        <p><strong>Facebook:</strong> <a href="https://facebook.com/@staff.facebook" target="_blank">@staff.facebook</a></p>
+                    }
+                </div>
             </div>
         }
     </div>

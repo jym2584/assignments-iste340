@@ -1,0 +1,11 @@
+﻿@model exampleApp.Models.WithModel; // can only use one model per view 
+@{
+    ViewData["Title"] = Model.pageTitle;
+}
+
+<h1>@Model.Title</h1>
+<ul>
+    @for(var i=1; i < Model.HowMany; i++){
+        <li>Number: @i</li>
+    }
+</ul>
