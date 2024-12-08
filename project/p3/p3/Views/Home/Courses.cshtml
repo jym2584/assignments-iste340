@@ -1,0 +1,32 @@
+﻿@model List<p3.Models.CourseModel>
+
+@{
+    ViewData["Title"] = "Course Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Courses</h1>
+    <div class="row">
+        <div class="col-8">
+            <table id="coursesTable" class="display">
+                <thead>
+                    <tr>
+                        <th>CourseID</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var course in Model)
+                    {
+                        <tr>
+                            <td>@course.courseID</td>
+                            <td>@course.title</td>
+                            <td>@course.description</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

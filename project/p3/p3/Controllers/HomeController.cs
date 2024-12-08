@@ -6,40 +6,22 @@ using System.Diagnostics;
 
 namespace p3.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         private readonly ILogger<HomeController> _logger;
 
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
 
-        //public async IActionResult About()
-        public async Task<IActionResult> About()
-        {
-            //load a dr
-            DataRetrieval dr = new DataRetrieval();
-            //call the method
-            var AboutString = await dr.GetData("about/");
-            //next steps
-            /*
-             * build about model
-             * cast to json
-             * feed it to the view
-             */
-            var aboutResult = JsonConvert.DeserializeObject<AboutModel>(AboutString);
-            aboutResult.pageTitle = "About the iSchool!";
-
-            return View(aboutResult);
-        }
-
-        public async Task<IActionResult> Course()
+        public async Task<IActionResult> Courses()
         {
             //load a dr
             DataRetrieval dr = new DataRetrieval();
@@ -51,25 +33,36 @@ namespace p3.Controllers
              * cast to json
              * feed it to the view
              */
-            var result = JsonConvert.DeserializeObject<CourseModel>(data);
+            var result = JsonConvert.DeserializeObject<List<CourseModel>>(data);
             return View(result);
         }
 
-
-        public async Task<IActionResult> Degrees()
+        public async Task<IActionResult> Index()
         {
             //load a dr
             DataRetrieval dr = new DataRetrieval();
             //call the method
-            var data = await dr.GetData("degrees/");
+            var aboutString = await dr.GetData("about/");
+            var degreesString = await dr.GetData("degrees/");
+            var minorsString = await dr.GetData("minors/");
             //next steps
             /*
              * build about model
              * cast to json
+             * 
              * feed it to the view
              */
-            var result = JsonConvert.DeserializeObject<DegreesModel>(data);
-            return View(result);
+            var aboutResult = JsonConvert.DeserializeObject<AboutModel>(aboutString);
+            var degreesResult = JsonConvert.DeserializeObject<DegreesModel>(degreesString);
+            var minorsResult = JsonConvert.DeserializeObject<MinorsModel>(minorsString);
+            var aboutAndDegreesModel = new AboutAndDegreesModel
+            {
+                aboutModel = aboutResult,
+                degreesModel = degreesResult,
+                minorsModel = minorsResult
+            };
+
+            return View(aboutAndDegreesModel);
         }
 
         public async Task<IActionResult> Employment()
@@ -119,7 +112,7 @@ namespace p3.Controllers
             var result = JsonConvert.DeserializeObject<MinorsModel>(data);
             return View(result);
         }
-        public async Task<IActionResult> NewsModel()
+        public async Task<IActionResult> News()
         {
             //load a dr
             DataRetrieval dr = new DataRetrieval();
@@ -151,12 +144,6 @@ namespace p3.Controllers
             return View(result);
         }
 
-
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

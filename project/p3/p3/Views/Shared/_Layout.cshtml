@@ -1,11 +1,15 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var footerModel = ViewData["FooterModel"] as p3.Models.FooterModel;
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - iSchool p3</title>
+    <title>@ViewData["Title"] - iSchool</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/lib/jquery-ui/jquery-ui.css"/>
+    <link rel="stylesheet" href="~/lib/jquery-ui/jquery-ui.css" />
+    <link rel="stylesheet" href="~/lib/jquery-ui-datatables/jquery-datatables.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/p3.styles.css" asp-append-version="true" />
 </head>
@@ -22,9 +26,9 @@
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Course">Courses</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Courses">Courses</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Employment">Employment</a>
@@ -40,6 +44,7 @@
             </div>
         </nav>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
@@ -47,13 +52,33 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2024 RIT iSchool - p3
-        </div>
+        @if (footerModel != null)
+        {
+            <div class="footer-grid-container">
+                <div class="social">
+                    <p><b>@footerModel.social.title</b></p>
+                    <!-- Render other footer content here -->
+                </div>
+                <div class="quicklinks">
+                    <!-- Quicklinks section here -->
+                </div>
+                <div class="copyright">
+                    <!-- Copyright section here -->
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="footer-grid-container">
+                <p>No footer content available</p>
+            </div>
+        }
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/jquery-ui/jquery-ui.js"></script>
+    <script src="~/lib/jquery-ui-datatables/datatables.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>

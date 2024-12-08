@@ -3,7 +3,197 @@
     ViewData["Title"] = "Employment Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Employment Page</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    .intro-banner {
+        position: relative;
+        height: 400px;
+        width: 100%;
+        background-size: cover;
+        border-radius: 8px;
+    }
+
+    .intro-text {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 20px 0px;
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 5px 5px 0 0;
+    }
+
+    .content-section {
+        margin-top: 50px;
+    }
+
+    .statistics-section {
+        margin-top: 100px;
+        text-align: center;
+    }
+
+    /* New styles for layout adjustments */
+    .content-row {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .content-column {
+        flex: 1;
+        padding: 10px;
+        margin: 10px;
+    }
+
+    .statistics-box {
+        padding: 20px;
+        margin: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        text-align: center;
+    }
+
+    .statistics-row {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+
+    .featured-box {
+        padding: 20px;
+        margin: 10px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+    }
+
+    .featured-container {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+</style>
+
+<div>
+    <!-- Introduction -->
+    <div class="intro-banner" style="background-image: url('https://www.rit.edu/careerservices/sites/rit.edu.careerservices/files/images/paragraph/banner-item/co-op-banner.jpg')">
+        <div class="intro-text">
+            <h1 class="text-white text-center">@Model.introduction.title</h1>
+        </div>
+    </div>
+
+    <!-- Employment description -->
+    <div class="content-section">
+        <div class="content-row">
+            @foreach (var content in @Model.introduction.content)
+            {
+                <div class="content-column">
+                    <h3>@content.title</h3>
+                    <p>@content.description</p>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Employment stats -->
+    <div class="statistics-section">
+        <h3 class="text-primary">@Model.degreeStatistics.title</h3>
+        <div class="statistics-row">
+            @foreach (var statistic in @Model.degreeStatistics.statistics)
+            {
+                <div class="statistics-box col-md-3">
+                    <h4 class="text-primary">@statistic.value</h4>
+                    <p>@statistic.description</p>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Featured employers and job titles -->
+    <div class="featured-container">
+        <!-- Featured Employers -->
+        <div class="featured-box col-md-5">
+            <h4 class="text-primary">Featured Employers</h4>
+            <ul>
+                @foreach (var employer in @Model.employers.employerNames)
+                {
+                    <li>@employer</li>
+                }
+            </ul>
+        </div>
+
+        <!-- Featured Careers -->
+        <div class="featured-box col-md-5">
+            <h4 class="text-primary">Featured Careers</h4>
+            <ul>
+                @foreach (var career in @Model.careers.careerNames)
+                {
+                    <li>@career</li>
+                }
+            </ul>
+        </div>
+    </div>
+
+    <h4 class="text-primary">Employment Map</h4>
+    <embed src="https://ischool.gccis.rit.edu/api/map.php" style="width:100%; height: 900px;">
+    <!-- Coop and employment tables -->
+    <!-- Coop Table -->
+    <div class="row">
+        <div class="col-8">
+            <h3 class="text-primary">@Model.coopTable.title</h3>
+            <table id="coopTable" class="display">
+                <thead>
+                    <tr>
+                        <th>Employer</th>
+                        <th>Degree</th>
+                        <th>City</th>
+                        <th>Term</th>
+                        <!-- Add more headers based on your data -->
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var coopInfo in @Model.coopTable.coopInformation)
+                    {
+                        <tr>
+                            <td>@coopInfo.employer</td>
+                            <td>@coopInfo.degree</td>
+                            <td>@coopInfo.city</td>
+                            <td>@coopInfo.term</td>
+                            <!-- Add more data cells based on your model -->
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    </div>
+
+    <!-- Employment Table -->
+    <div class="row">
+        <div class="col-8">
+            <h3 class="text-primary">@Model.employmentTable.title</h3>
+            <table id="employmentTable" class="display">
+                <thead>
+                    <tr>
+                        <th>Employer</th>
+                        <th>Degree</th>
+                        <th>City</th>
+                        <th>Title</th>
+                        <th>Start Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var empInfo in @Model.employmentTable.professionalEmploymentInformation)
+                    {
+                        <tr>
+                            <td>@empInfo.employer</td>
+                            <td>@empInfo.degree</td>
+                            <td>@empInfo.city</td>
+                            <td>@empInfo.title</td>
+                            <td>@empInfo.startDate</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
 </div>

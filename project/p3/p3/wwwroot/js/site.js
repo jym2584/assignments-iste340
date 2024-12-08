@@ -3,7 +3,29 @@
 
 // Write your JavaScript code.
 
-$(function () {
+$(document).ready(function () {
+
+    $("#modal").dialog({
+        autoOpen: false,
+        modal: true,
+        title: "Course Modal",
+        width: 600,
+        height: 300
+    });
+
+    $('#programAcc').accordion({ collapsible: true });
+    $('#degreeAcc').accordion({ collapsible: true });
+    $('#gradDegreeAcc').accordion({ collapsible: true });
+    $('#minorsAcc').accordion({ collapsible: true });
+
     // open accordion for people
     $('#testAcc').accordion({ collapsible: true });
+
+    // coursesTable
+    $('#coursesTable').DataTable();
+
+    //coop table
+    $('#coopTable').DataTable();
+    //employment table
+    $('#employmentTable').DataTable();
 });

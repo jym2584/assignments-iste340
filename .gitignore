@@ -1,0 +1,77 @@
+# ASP.NET
+## User-specific files
+.vs/
+.vscode/
+.idea/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Tye-generated files
+.tye/
+
+# ASP.NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Ignore build output folders
+bin/
+obj/
+
+# Ignore configuration files
+appsettings.Development.json
+appsettings.Local.json
+appsettings.Production.json
+appsettings.Test.json
+
+# Ignore user secrets
+secrets.json
+
+# Ignore IntelliJ IDEA project files
+.idea/
+
+# User-specific files for Visual Studio
+.vs/
+
+# User-specific files for Visual Studio for Mac
+.vscode/
+
+# JetBrains Rider
+.idea/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp
+
+# Folder where ReSharper keeps its cache
+_ReSharper.Caches/
+
+# ASP.NET temporary files
+Temporary ASP.NET Files/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msm
+*.msp

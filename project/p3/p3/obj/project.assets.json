@@ -61,11 +61,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\count\\Documents\\GitHub\\assignments-iste340\\project\\p3\\p3\\p3.csproj",
+      "projectUniqueName": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\p3.csproj",
       "projectName": "p3",
-      "projectPath": "C:\\Users\\count\\Documents\\GitHub\\assignments-iste340\\project\\p3\\p3\\p3.csproj",
+      "projectPath": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\p3.csproj",
       "packagesPath": "C:\\Users\\count\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\count\\Documents\\GitHub\\assignments-iste340\\project\\p3\\p3\\obj\\",
+      "outputPath": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -80,6 +80,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

@@ -69,6 +69,10 @@ wwwroot\lib\jquery-ui\jquery-ui.theme.css
 wwwroot\lib\jquery-ui\jquery-ui.theme.min.css
 wwwroot\lib\jquery-ui\LICENSE.txt
 wwwroot\lib\jquery-ui\package.json
+wwwroot\lib\jquery-ui-datatables\datatables.css
+wwwroot\lib\jquery-ui-datatables\datatables.js
+wwwroot\lib\jquery-ui-datatables\datatables.min.css
+wwwroot\lib\jquery-ui-datatables\datatables.min.js
 wwwroot\lib\jquery-validation\dist\additional-methods.js
 wwwroot\lib\jquery-validation\dist\additional-methods.min.js
 wwwroot\lib\jquery-validation\dist\jquery.validate.js

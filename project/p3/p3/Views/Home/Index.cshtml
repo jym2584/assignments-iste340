@@ -1,8 +1,149 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model p3.Models.AboutAndDegreesModel
+@{
+    ViewData["Title"] = "iSchool Main Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<script>
+
+
+    async function getMinorDetails(course) {
+        console.log(`Getting minor details for ${course}`);
+        try {
+            let response = await fetch(`https://apcekwbz63.execute-api.us-east-2.amazonaws.com/iste340/proxy?url=https://ischool.gccis.rit.edu/api/course/courseID=${course}`);
+            let data = await response.json();
+
+            $("#modal").dialog("option", "title", `${data.title} (${data.courseID})`); // set title
+            $("#modal").html(`<p>${data.description}</p>`); // set html
+            $("#modal").dialog("open");
+        } catch (error) {
+            $("#modal").dialog("option", "title", `Error`); // set title
+            $("#modal").html("<p>${error}</p>"); // set html
+            $("#modal").dialog("open");
+        }
+    }
+
+</script>
+
+
+<style>
+    .intro-banner {
+        position: relative;
+        height: 400px;
+        width: 100%;
+        background-size: cover;
+        border-radius: 8px;
+    }
+
+    .intro-text {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        padding: 20px 0px;
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 5px 5px 0 0;
+    }
+
+    .accordion-section {
+        margin-top: 30px;
+    }
+
+    .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin-top: 30px;
+    }
+</style>
+
+<div>
+    <!-- Introduction Section -->
+    <div class="intro-banner" style="background-image: url('https://cdn.rit.edu/images/program/2022-08/computing-and-information-technologies-bs_0.jpg')">
+        <div class="intro-text">
+            <h1 class="text-white text-center">School of Information</h1>
+        </div>
+    </div>
+
+    <!-- About Section -->
+    <div class="mt-4">
+        <h3 class="text-primary">@Model.aboutModel.title</h3>
+        <p>@Model.aboutModel.description</p>
+        <i>@Model.aboutModel.quote</i>
+        <b>@Model.aboutModel.quoteAuthor</b>
+    </div>
+
+    <!-- Degrees Section -->
+    <div class="grid-container">
+        <div class="degrees-section">
+            <h3 class="text-primary">Undergraduate Degrees</h3>
+            <div id="degreeAcc">
+                @foreach (var undergraduate in @Model.degreesModel.undergraduate)
+                {
+                    <h3 class="section-title">@undergraduate.title (@undergraduate.degreeName)</h3>
+                    <div>
+                        <p>@undergraduate.description</p>
+                        <ul>
+                            @foreach (var concentration in @undergraduate.concentrations)
+                            {
+                                <li>@concentration</li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
+            <h3 class="text-primary">Graduate Degrees</h3>
+            <div id="gradDegreeAcc">
+                @foreach (var graduate in @Model.degreesModel.graduate)
+                {
+                    <h3 class="section-title">@graduate.title (@graduate.degreeName)</h3>
+
+                    @if (graduate.degreeName == "graduate advanced certificates")
+                    {
+                        <div>
+                            <p>Available Certificates:</p>
+                            <ul>
+                            @foreach (var certificate in @graduate.availableCertificates) {
+                                <li>@certificate</li>
+                            }
+                            </ul>
+                        </div>
+                    } else {
+                    <div>
+                            <p>@graduate.description</p>
+                        <ul>
+                                @foreach (var concentration in @graduate.concentrations)
+                            {
+                                <li>@concentration</li>
+                            }
+                        </ul>
+                    </div>
+                    }
+                }
+            </div>
+        </div>
+        <!-- Minors Section -->
+        <div id="minors-section">
+            <h3 class="text-primary">Minors</h3>
+            <div id="minorsAcc">
+                @foreach (var minor in @Model.minorsModel.UgMinors)
+                {
+                    <h3 class="section-title">@minor.title</h3>
+                    <div>
+                        <p>@minor.description</p>
+                        <ul>
+                            @foreach (var course in @minor.courses)
+                            {
+                                <li>
+                                    <button onclick="getMinorDetails('@course')">@course</button>
+                                </li>
+                            }
+                        </ul>
+
+                        <p><b>Note:</b> @minor.note</p>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div id="modal"></div>
 </div>

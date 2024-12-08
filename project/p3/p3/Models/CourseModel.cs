@@ -9,4 +9,10 @@
     }
 
 
+    public class CoursesModel
+    {
+        public List<CourseModel> courses{ get; set; }
+    }
+
+
 }
