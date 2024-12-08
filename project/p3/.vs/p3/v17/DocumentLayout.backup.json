@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "E:\\GitHub\\assignments-iste340\\project\\p3\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E0FD6BB4-0D61-4253-85CF-3F9032825B98}|p3\\p3.csproj|e:\\github\\assignments-iste340\\project\\p3\\p3\\views\\home\\employment.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E0FD6BB4-0D61-4253-85CF-3F9032825B98}|p3\\p3.csproj|solutionrelative:p3\\views\\home\\employment.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{E0FD6BB4-0D61-4253-85CF-3F9032825B98}|p3\\p3.csproj|e:\\github\\assignments-iste340\\project\\p3\\p3\\views\\home\\news.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E0FD6BB4-0D61-4253-85CF-3F9032825B98}|p3\\p3.csproj|solutionrelative:p3\\views\\home\\news.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E0FD6BB4-0D61-4253-85CF-3F9032825B98}|p3\\p3.csproj|e:\\github\\assignments-iste340\\project\\p3\\p3\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{E0FD6BB4-0D61-4253-85CF-3F9032825B98}|p3\\p3.csproj|solutionrelative:p3\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,19 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "site.js",
+              "DocumentMoniker": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\js\\site.js",
+              "RelativeDocumentMoniker": "p3\\wwwroot\\js\\site.js",
+              "ToolTip": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\js\\site.js",
+              "RelativeToolTip": "p3\\wwwroot\\js\\site.js",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAwAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-12-08T20:05:39.781Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Employment.cshtml",
-              "DocumentMoniker": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\Views\\Home\\Employment.cshtml",
-              "RelativeDocumentMoniker": "p3\\Views\\Home\\Employment.cshtml",
-              "ToolTip": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\Views\\Home\\Employment.cshtml",
-              "RelativeToolTip": "p3\\Views\\Home\\Employment.cshtml",
-              "ViewState": "AgIAAHwAAAAAAAAAAAAAAIYAAAAaAAAAAAAAAA==",
+              "Title": "News.cshtml",
+              "DocumentMoniker": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\Views\\Home\\News.cshtml",
+              "RelativeDocumentMoniker": "p3\\Views\\Home\\News.cshtml",
+              "ToolTip": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\Views\\Home\\News.cshtml",
+              "RelativeToolTip": "p3\\Views\\Home\\News.cshtml",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAADsAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-08T02:47:57.622Z",
+              "WhenOpened": "2024-12-08T20:04:43.732Z",
               "EditorCaption": ""
             }
           ]
