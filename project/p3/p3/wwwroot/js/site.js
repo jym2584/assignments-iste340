@@ -5,15 +5,18 @@
 
 $(document).ready(function () {
 
+    // news page
     $("#tabs").tabs().addClass("ui-tabs-vertical ui-helper-clearfix");
     $("#tabs li").removeClass("ui-corner-top").addClass("ui-corner-left");
 
+    // index page for dynamic course loading
     $("#modal").dialog({
         autoOpen: false,
         modal: true,
         title: "Course Modal",
         width: 600,
-        height: 300
+        height: 300,
+        position: { my: "center top", at: "center top+100", of: window }
     });
 
     $(".rotate").textrotator({
@@ -22,6 +25,7 @@ $(document).ready(function () {
         speed: 2000 // How many milliseconds until the next word show.
     });
 
+    // index page
     $('#programAcc').accordion({ collapsible: true });
     $('#degreeAcc').accordion({ collapsible: true });
     $('#gradDegreeAcc').accordion({ collapsible: true });

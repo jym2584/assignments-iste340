@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "82xc0/w+3q3wo2nbjx0pgAwld8xYQl22JtkCzo8n0sA=",
+  "Hash": "I8JPdm11V2UAJE99CvJHZyLhSF02uuRhEkPWMDgwXKs=",
   "Source": "p3",
   "BasePath": "_content/p3",
   "Mode": "Default",
@@ -115,8 +115,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "aq309xqetl",
-      "Integrity": "4v915Xb1ZaUPcQc3budI0bDB9b63UPARGY6n2bFeyQU=",
+      "Fingerprint": "sq2tzu88qa",
+      "Integrity": "JG6RM8k7OMxyB3xVrb5yVgBjU+NKv2gJiGOCNBOQgNw=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\site.js"
@@ -3417,51 +3417,6 @@
       ]
     },
     {
-      "Route": "js/site.aq309xqetl.js",
-      "AssetFile": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\js\\site.js",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1517"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/javascript"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"4v915Xb1ZaUPcQc3budI0bDB9b63UPARGY6n2bFeyQU=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 08 Dec 2024 20:05:43 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "aq309xqetl"
-        },
-        {
-          "Name": "label",
-          "Value": "js/site.js"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-4v915Xb1ZaUPcQc3budI0bDB9b63UPARGY6n2bFeyQU="
-        }
-      ]
-    },
-    {
       "Route": "js/site.js",
       "AssetFile": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\js\\site.js",
       "Selectors": [],
@@ -3472,7 +3427,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1517"
+          "Value": "1592"
         },
         {
           "Name": "Content-Type",
@@ -3480,11 +3435,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"4v915Xb1ZaUPcQc3budI0bDB9b63UPARGY6n2bFeyQU=\""
+          "Value": "\"JG6RM8k7OMxyB3xVrb5yVgBjU+NKv2gJiGOCNBOQgNw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 08 Dec 2024 20:05:43 GMT"
+          "Value": "Sun, 08 Dec 2024 20:39:31 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3494,7 +3449,52 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-4v915Xb1ZaUPcQc3budI0bDB9b63UPARGY6n2bFeyQU="
+          "Value": "sha256-JG6RM8k7OMxyB3xVrb5yVgBjU+NKv2gJiGOCNBOQgNw="
+        }
+      ]
+    },
+    {
+      "Route": "js/site.sq2tzu88qa.js",
+      "AssetFile": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\js\\site.js",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1592"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/javascript"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"JG6RM8k7OMxyB3xVrb5yVgBjU+NKv2gJiGOCNBOQgNw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 08 Dec 2024 20:39:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "sq2tzu88qa"
+        },
+        {
+          "Name": "label",
+          "Value": "js/site.js"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-JG6RM8k7OMxyB3xVrb5yVgBjU+NKv2gJiGOCNBOQgNw="
         }
       ]
     },
