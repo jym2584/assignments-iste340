@@ -197,6 +197,94 @@
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\drag-master\\.editorconfig",
+      "PackagePath": "staticwebassets\\lib\\drag-master\\.editorconfig"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\drag-master\\.gitignore",
+      "PackagePath": "staticwebassets\\lib\\drag-master\\.gitignore"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\drag-master\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\drag-master"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\drag-master\\README.md",
+      "PackagePath": "staticwebassets\\lib\\drag-master\\README.md"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\drag-master\\SECURITY.md",
+      "PackagePath": "staticwebassets\\lib\\drag-master\\SECURITY.md"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\drag-master\\demo\\.babelrc",
+      "PackagePath": "staticwebassets\\lib\\drag-master\\demo\\.babelrc"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\drag-master\\demo\\.browserslistrc",
+      "PackagePath": "staticwebassets\\lib\\drag-master\\demo\\.browserslistrc"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\drag-master\\demo\\.editorconfig",
+      "PackagePath": "staticwebassets\\lib\\drag-master\\demo\\.editorconfig"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\drag-master\\demo\\.eslintignore",
+      "PackagePath": "staticwebassets\\lib\\drag-master\\demo\\.eslintignore"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\drag-master\\demo\\.eslintrc",
+      "PackagePath": "staticwebassets\\lib\\drag-master\\demo\\.eslintrc"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\drag-master\\demo\\.gitignore",
+      "PackagePath": "staticwebassets\\lib\\drag-master\\demo\\.gitignore"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\drag-master\\demo\\README.md",
+      "PackagePath": "staticwebassets\\lib\\drag-master\\demo\\README.md"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\drag-master\\demo\\package.json",
+      "PackagePath": "staticwebassets\\lib\\drag-master\\demo\\package.json"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\drag-master\\demo\\src\\index.html",
+      "PackagePath": "staticwebassets\\lib\\drag-master\\demo\\src\\index.html"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\drag-master\\demo\\src\\js\\index.js",
+      "PackagePath": "staticwebassets\\lib\\drag-master\\demo\\src\\js\\index.js"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\drag-master\\demo\\src\\sass\\index.scss",
+      "PackagePath": "staticwebassets\\lib\\drag-master\\demo\\src\\sass\\index.scss"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\drag-master\\demo\\webpack.config.js",
+      "PackagePath": "staticwebassets\\lib\\drag-master\\demo\\webpack.config.js"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\drag-master\\docs\\index.html",
+      "PackagePath": "staticwebassets\\lib\\drag-master\\docs\\index.html"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\drag-master\\docs\\js\\main.js",
+      "PackagePath": "staticwebassets\\lib\\drag-master\\docs\\js\\main.js"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\drag-master\\index.js",
+      "PackagePath": "staticwebassets\\lib\\drag-master\\index.js"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\drag-master\\package.json",
+      "PackagePath": "staticwebassets\\lib\\drag-master\\package.json"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\drag-master\\screenshot.gif",
+      "PackagePath": "staticwebassets\\lib\\drag-master\\screenshot.gif"
+    },
+    {
       "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-datatables\\datatables.css",
       "PackagePath": "staticwebassets\\lib\\jquery-ui-datatables\\datatables.css"
     },
@@ -211,6 +299,170 @@
     {
       "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-datatables\\datatables.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-ui-datatables\\datatables.min.js"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\.gitignore",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\.gitignore"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\LICENSE.txt"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\README.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\README.md"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\bin\\sync-vendor-libs.sh",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\bin\\sync-vendor-libs.sh"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\css\\blueimp-gallery-indicator.css",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\css\\blueimp-gallery-indicator.css"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\css\\blueimp-gallery-video.css",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\css\\blueimp-gallery-video.css"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\css\\blueimp-gallery.css",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\css\\blueimp-gallery.css"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\css\\blueimp-gallery.min.css",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\css\\blueimp-gallery.min.css"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\css\\blueimp-gallery.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\css\\blueimp-gallery.min.css.map"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\css\\demo\\demo.css",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\css\\demo\\demo.css"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\img\\close.png",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\img\\close.png"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\img\\close.svg",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\img\\close.svg"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\img\\error.png",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\img\\error.png"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\img\\error.svg",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\img\\error.svg"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\img\\loading.gif",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\img\\loading.gif"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\img\\loading.svg",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\img\\loading.svg"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\img\\next.png",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\img\\next.png"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\img\\next.svg",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\img\\next.svg"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\img\\play-pause.png",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\img\\play-pause.png"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\img\\play-pause.svg",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\img\\play-pause.svg"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\img\\prev.png",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\img\\prev.png"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\img\\prev.svg",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\img\\prev.svg"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\img\\video-play.png",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\img\\video-play.png"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\img\\video-play.svg",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\img\\video-play.svg"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\index.html",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\index.html"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\js\\blueimp-gallery-fullscreen.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\js\\blueimp-gallery-fullscreen.js"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\js\\blueimp-gallery-indicator.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\js\\blueimp-gallery-indicator.js"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\js\\blueimp-gallery-video.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\js\\blueimp-gallery-video.js"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\js\\blueimp-gallery-vimeo.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\js\\blueimp-gallery-vimeo.js"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\js\\blueimp-gallery-youtube.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\js\\blueimp-gallery-youtube.js"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\js\\blueimp-gallery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\js\\blueimp-gallery.js"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\js\\blueimp-gallery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\js\\blueimp-gallery.min.js"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\js\\blueimp-gallery.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\js\\blueimp-gallery.min.js.map"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\js\\blueimp-helper.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\js\\blueimp-helper.js"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\js\\demo\\demo.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\js\\demo\\demo.js"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\js\\jquery.blueimp-gallery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\js\\jquery.blueimp-gallery.js"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\js\\jquery.blueimp-gallery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\js\\jquery.blueimp-gallery.min.js"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\js\\jquery.blueimp-gallery.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\js\\jquery.blueimp-gallery.min.js.map"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\js\\vendor\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\js\\vendor\\jquery.js"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\package-lock.json",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\package-lock.json"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui-gallery\\package.json",
+      "PackagePath": "staticwebassets\\lib\\jquery-ui-gallery\\package.json"
     },
     {
       "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery-ui\\AUTHORS.txt",
@@ -335,6 +587,30 @@
     {
       "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\simple-text-rotator\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\simple-text-rotator"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\simple-text-rotator\\README.md",
+      "PackagePath": "staticwebassets\\lib\\simple-text-rotator\\README.md"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\simple-text-rotator\\demo.html",
+      "PackagePath": "staticwebassets\\lib\\simple-text-rotator\\demo.html"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\simple-text-rotator\\jquery.simple-text-rotator.js",
+      "PackagePath": "staticwebassets\\lib\\simple-text-rotator\\jquery.simple-text-rotator.js"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\simple-text-rotator\\jquery.simple-text-rotator.min.js",
+      "PackagePath": "staticwebassets\\lib\\simple-text-rotator\\jquery.simple-text-rotator.min.js"
+    },
+    {
+      "Id": "E:\\GitHub\\assignments-iste340\\project\\p3\\p3\\wwwroot\\lib\\simple-text-rotator\\simpletextrotator.css",
+      "PackagePath": "staticwebassets\\lib\\simple-text-rotator\\simpletextrotator.css"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.p3.props",

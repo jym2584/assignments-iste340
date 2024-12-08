@@ -1,6 +1,18 @@
 ﻿@{
     var footerModel = ViewData["FooterModel"] as p3.Models.FooterModel;
 }
+
+<style>
+    .footer-grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr; 
+        gap: 40px; 
+        padding: 40px;
+        width: 100%;
+        box-sizing: border-box;
+        border-top: 1px solid black;
+    }
+</style>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +22,8 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/lib/jquery-ui/jquery-ui.css" />
     <link rel="stylesheet" href="~/lib/jquery-ui-datatables/jquery-datatables.css" />
+    <link rel="stylesheet" href="~/lib/jquery-ui-gallery/css/blueimp-gallery.min.css" />
+    <link rel="stylesheet" href="~/lib/simple-text-rotator//simpletextrotator.css"/>
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/p3.styles.css" asp-append-version="true" />
 </head>
@@ -51,35 +65,38 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        @if (footerModel != null)
-        {
-            <div class="footer-grid-container">
-                <div class="social">
-                    <p><b>@footerModel.social.title</b></p>
-                    <!-- Render other footer content here -->
-                </div>
-                <div class="quicklinks">
-                    <!-- Quicklinks section here -->
-                </div>
-                <div class="copyright">
-                    <!-- Copyright section here -->
-                </div>
+    <footer>
+        <div class="footer-grid-container">
+            <div class="social">
+                <p><b>@footerModel.social.title</b></p>
+                <p>@footerModel.social.tweet</p>
+                <p>@footerModel.social.by</p>
+
+                <p><a href="@footerModel.social.twitter">Twitter</a></p>
+                <p><a href="@footerModel.social.facebook">Facebook</a></p>
             </div>
-        }
-        else
-        {
-            <div class="footer-grid-container">
-                <p>No footer content available</p>
+            <div class="quicklinks">
+                <p><b>Quick Links</b></p>
+                @foreach (var quicklink in @footerModel.quickLinks)
+                {
+                    <p><a href="@quicklink.href">@quicklink.title</a></p>
+                }
+                <p><a href="@footerModel.news">@footerModel.news</a></p>
             </div>
-        }
+            <div class="copyright">
+                <p><b>@footerModel.copyright.title</b></p>
+                <p>@Html.Raw(footerModel.copyright.html)</p>
+            </div>
+        </div>
     </footer>
+
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/lib/jquery-ui/jquery-ui.js"></script>
     <script src="~/lib/jquery-ui-datatables/datatables.js"></script>
+    <script src="~/lib/jquery-ui-gallery/js/blueimp-gallery.min.js"></script>
+    <script src="~/lib/simple-text-rotator//jquery.simple-text-rotator.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

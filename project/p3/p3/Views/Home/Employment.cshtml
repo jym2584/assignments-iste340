@@ -61,6 +61,7 @@
         margin: 10px;
         border: 1px solid #ccc;
         border-radius: 8px;
+        text-align: center;
     }
 
     .featured-container {
@@ -111,10 +112,9 @@
         <div class="featured-box col-md-5">
             <h4 class="text-primary">Featured Employers</h4>
             <ul>
-                @foreach (var employer in @Model.employers.employerNames)
-                {
-                    <li>@employer</li>
-                }
+                <span class="rotate">
+                    @string.Join(", ", @Model.employers.employerNames)
+                </span>
             </ul>
         </div>
 
@@ -122,20 +122,17 @@
         <div class="featured-box col-md-5">
             <h4 class="text-primary">Featured Careers</h4>
             <ul>
-                @foreach (var career in @Model.careers.careerNames)
-                {
-                    <li>@career</li>
-                }
+                <span class="rotate">
+                    @string.Join(", ", @Model.careers.careerNames)
+                </span>
             </ul>
         </div>
     </div>
 
-    <h4 class="text-primary">Employment Map</h4>
-    <embed src="https://ischool.gccis.rit.edu/api/map.php" style="width:100%; height: 900px;">
     <!-- Coop and employment tables -->
     <!-- Coop Table -->
     <div class="row">
-        <div class="col-8">
+        <div class="col-16">
             <h3 class="text-primary">@Model.coopTable.title</h3>
             <table id="coopTable" class="display">
                 <thead>
@@ -167,7 +164,7 @@
 
     <!-- Employment Table -->
     <div class="row">
-        <div class="col-8">
+        <div class="col-16">
             <h3 class="text-primary">@Model.employmentTable.title</h3>
             <table id="employmentTable" class="display">
                 <thead>
@@ -193,6 +190,9 @@
                 </tbody>
             </table>
         </div>
+
+    <h4 class="text-primary">Employment Map</h4>
+    <embed src="https://ischool.gccis.rit.edu/api/map.php" style="width:100%; height: 1300px;">
     </div>
 
 
